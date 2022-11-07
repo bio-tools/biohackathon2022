@@ -15,6 +15,10 @@ To query EDAM or bio.tools from a GraphDb SPARQL end point using these template 
     Here is the [link](https://graphdb.ontotext.com/documentation/10.0/quick-start-guide.html) to the quick start.
     First you will need to create an account in order to download the installer file at [this](https://www.ontotext.com/products/graphdb/download/) adress.
 
-    Once installed you need to upload the needed data. In the "Import" tab you can load using a local file or a URL e.g. "https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl"
+    Once installed you need to upload the needed data. In the "Import" tab you can load using a local file or a URL e.g. 
+    
+    "https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl"
+    
+    "https://raw.githubusercontent.com/bio-tools/content/master/datasets/bioschemas-dump.ttl"
 
 Now you can test querying you dataset using the example notebook "EDAM_query_graphdb.ipynb"
