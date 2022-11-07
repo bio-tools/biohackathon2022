@@ -1,24 +1,65 @@
-To query EDAM or bio.tools from a GraphDb SPARQL end point using these template you need to setup
+INSTALLATION INSTRUCTIONS
+=========================
 
-1) **Install requirements**
-    ```
-    pip install requirements.txt 
-    ```
+These are the setup instructions that will allow you to run the notebooks available in this repository. Before starting to set this up, make sure you have **git** and **python** available on your machine.
 
-2) **Jupyter-lab**
+Clone the repository
+--------------------
 
-    It was installed with the requirements. You can launch it using ```jupyter-lab```  command from your terminal and opening the *.ipynb in this directory.
-    You can also use VisualSudioCode to visualise and run the *.ipynb notebook files.
+From a shell, the command line should be:
 
-3) **GraphDB**
+`git clone git@github.com:bio-tools/biohackathon2022.git`
 
-    Here is the [link](https://graphdb.ontotext.com/documentation/10.0/quick-start-guide.html) to the quick start.
-    First you will need to create an account in order to download the installer file at [this](https://www.ontotext.com/products/graphdb/download/) adress.
+Set up Python dependencies and Jupyter
+--------------------------------------
 
-    Once installed you need to upload the needed data. In the "Import" tab you can load using a local file or a URL e.g. 
-    
-    "https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl"
-    
-    "https://raw.githubusercontent.com/bio-tools/content/master/datasets/bioschemas-dump.ttl"
+1. set up a virtual environment, and activate it!
+This will prevent poluting your global python setup with libraries used only for this project
 
-Now you can test querying you dataset using the example notebook "EDAM_query_graphdb.ipynb"
+```
+# navigate to the notebooks folder
+cd biohackathon2022/notebooks
+# set up virtualenv
+python3 -m virtualenv .venv
+# activate the virtualenv
+. .venv/bin/activate
+# (you can leave the virtualenv anytime if you type 'deactivate')
+```
+
+2. install python dependencies
+
+we are going to use pip to install all python dependencies necessary to run jupyter and the notebooks
+
+```
+python -m pip install -r requirements.txt
+```
+
+3. run jupyter
+
+just type the following in your shell:
+
+```
+jupyter-notebook
+```
+
+The jupyter server will launch, and the web interface will be available locally on http://localhost:8888/tree
+
+You can also use VisualSudioCode to visualise and run the *.ipynb notebook files.
+
+Congrats, you're done with jupyter!
+
+Set up GraphDB
+--------------
+
+1. Go to the GraphDB website to download it
+
+You should register with an online form at https://www.ontotext.com/products/graphdb/download/. You will then receive a download link by email, and choose the appropriate installer for your OS.
+
+2. Run the GraphDB installer
+
+3. Run GraphDB!
+
+Import the data
+---------------
+
+leave all default options for the GraphDB repository.
