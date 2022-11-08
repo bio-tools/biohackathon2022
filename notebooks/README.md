@@ -61,15 +61,25 @@ You should register with an online form at https://www.ontotext.com/products/gra
 
 Set up a New GraphDB repository
 ---------------
-On the left panel, go to "Setup" and "Repositories" to create a new repository.
-Set up your graphDB repository name to "Project25" (so all partcipants have the same name, it avoid conflicts down the line)
+
+On the left panel, go to "Setup" and "Repositories" to create a new GraphDB repository.
+
+<img src="https://user-images.githubusercontent.com/1140736/200505350-306912ac-ce99-44c9-98bc-3d603fa7421c.png" width="50%" style="display: flex; justify-content: center;">
+
+Set up your GraphDB repository name to "Project25" (so all partcipants have the same name, it avoid conflicts down the line)
 Leave all default options for the GraphDB repository.
+
+<img src="https://user-images.githubusercontent.com/1140736/200505620-deeacd96-fcdf-4e98-a773-c2978fc7acb1.png" width="50%" style="display: flex; justify-content: center;">
 
 Import the Data
 -----------------
 
-Go to import on the left panel of graphDB, there you can upload bio.tools and EDAM from URL:
+Click on the "Import" button on the left panel of the GraphDB Web interface, where you can upload bio.tools and EDAM from the following URLs:
 
 EDAM: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
 
 bio.tools: https://raw.githubusercontent.com/bio-tools/content/master/datasets/bioschemas-dump.ttl
+
+<img src="https://user-images.githubusercontent.com/1140736/200507732-c1640b5e-0b22-4781-be4f-bf5892f6a82a.png" width="50%" style="display: flex; justify-content: center;">
+
+<img src="https://user-images.githubusercontent.com/1140736/200508241-62c52fb1-5c23-4bbe-9119-6bb0b6380ed3.png" width="50%" style="display: flex; justify-content: center;">
