@@ -39,7 +39,7 @@ python -m pip install -r requirements.txt
 just type the following in your shell:
 
 ```
-jupyter-notebook
+jupyter-lab
 ```
 
 The jupyter server will launch, and the web interface will be available locally on http://localhost:8888/tree
