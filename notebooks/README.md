@@ -83,3 +83,9 @@ bio.tools: https://raw.githubusercontent.com/bio-tools/content/master/datasets/b
 <img src="https://user-images.githubusercontent.com/1140736/200507732-c1640b5e-0b22-4781-be4f-bf5892f6a82a.png" width="50%" style="display: flex; justify-content: center;">
 
 <img src="https://user-images.githubusercontent.com/1140736/200508241-62c52fb1-5c23-4bbe-9119-6bb0b6380ed3.png" width="50%" style="display: flex; justify-content: center;">
+
+
+Dataset information
+---------------------
+
+As of today 10th of November, it seems like around 400 tools are missing from the bio.tools bioschemas turtle dump. The numbers are bound to change when the queries are re-run
