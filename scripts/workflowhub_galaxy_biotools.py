@@ -18,12 +18,37 @@ import requests, json, re, itertools
 ### https://github.com/AustralianBioCommons/australianbiocommons.github.io/blob/master/finders/toolfinder.py
 
 
+#####################################################
+### Access Galaxy API & extract ID + bio.tools ID ###
+#####################################################
+
+galaxy_api_req = requests.request("get", "https://usegalaxy.org.au/api/tools")
+if galaxy_api_req.status_code != 200:
+    raise FileNotFoundError(galaxy_api_req.url)
+tool_sections = json.loads(galaxy_api_req.text)
+### Herve Menager via Slack
+tools_nested = [tool_section.get('elems') for tool_section in tool_sections if 'elems' in tool_section]
+tools = list(itertools.chain.from_iterable(tools_nested))
+
+galaxy_biotools_matches = {}
+for tool in tools:
+    galaxy_id = tool["id"]
+    galaxy_id_no_version = "/".join(galaxy_id.split("/")[:-1])
+    biotools_id = None
+    if "xrefs" in tool:
+        for item in tool["xrefs"]:
+            if item["reftype"] == "bio.tools":
+                biotools_id = item["value"]
+                break
+    if biotools_id is not None:
+        galaxy_biotools_matches[galaxy_id_no_version] = biotools_id
+
+
 ##############################################################
 ### Get WorkflowHub space workflows and extract Galaxy IDs ###
 ##############################################################
 
 ### Get BioCommons space workflows
-available_data = {}
 ### https://stackoverflow.com/a/8685813
 req = requests.get("https://workflowhub.eu/programmes/8/workflows.json")
 if req.status_code != 200:
@@ -38,22 +63,21 @@ for workflow in space_data:
     link = workflow['links']['self']
     url = "https://workflowhub.eu%s.json" % link
     url_array.append((id, url))
+
+available_data = {}
+
 for id, url in url_array:
     response = requests.get(url)
     if response.status_code != 200:
         raise FileNotFoundError(response.url)
     workflow_metadata = json.loads(response.text)
-    available_data[id] = workflow_metadata
-
-### filter for workflow_class Galaxy
-galaxy_workflows = {}
-for i in available_data:
-    if available_data[i]['data']['attributes']['workflow_class']['key'] == "galaxy":
-        galaxy_workflows[i] = available_data[i]
+    ### keep only Galaxy workflows!
+    if workflow_metadata['data']['attributes']['workflow_class']['key'] == "galaxy":
+        available_data[id] = workflow_metadata
 
 ### extract unique workflow steps as Galaxy IDs
 all_workflows_steps = {}
-for i in galaxy_workflows:
+for i in available_data:
     steps = available_data[i]['data']['attributes']['internals']['steps']
     workflow_steps = {}
     for j in range(0, len(steps)):
@@ -65,35 +89,52 @@ for i in galaxy_workflows:
         if re.search(match_string, description):
             # https://stackoverflow.com/a/15340694
             pattern = re.compile(match_string)
-            result = pattern.search(description)
-            extracted_description = result.group(0)
-            workflow_steps[ident] = extracted_description
+            extracted_description = pattern.search(description)
+            extracted_galaxy_id = "/".join(extracted_description.group(0).split("/")[:-1])
+            workflow_steps[extracted_galaxy_id] = ident
         all_workflows_steps[i] = workflow_steps
 
+####################################################################################################################################
+### final mapping for each Galaxy ID extracted from the workflows, what is the workflow ID, biotools ID and workflow step number ###
+####################################################################################################################################
 
-#####################################################
-### Access Galaxy API & extract ID + bio.tools ID ###
-#####################################################
+workflow_galaxy_biotools_map = {}
 
-galaxy_api_req = requests.request("get", "https://usegalaxy.org.au/api/tools")
-if galaxy_api_req.status_code != 200:
-    raise FileNotFoundError(galaxy_api_req.url)
-tool_sections = json.loads(galaxy_api_req.text)
-### Herve Menager via Slack
-tools_nested = [tool_section.get('elems') for tool_section in tool_sections if 'elems' in tool_section]
-tools = list(itertools.chain.from_iterable(tools_nested))
+for workflow in all_workflows_steps:
+    #print("workflow:", workflow)
+    for wfh_galaxy_id in all_workflows_steps[workflow]:
+        #print("wfh_galaxy_id:", wfh_galaxy_id)
+        step_number = all_workflows_steps[workflow][wfh_galaxy_id]
+        if wfh_galaxy_id in galaxy_biotools_matches:
+            biotools_id = galaxy_biotools_matches[wfh_galaxy_id]
+        else:
+            biotools_id = None
+        print(biotools_id)
+        workflow_data = {}
+        workflow_data['workflow_id'] = workflow
+        workflow_data['biotools_id'] = biotools_id
+        workflow_data['galaxy_workflow_step_number'] = step_number
+        workflow_galaxy_biotools_map[wfh_galaxy_id] = workflow_data
 
-tool_id_list = {}
-for tool in tools:
-    galaxy_id = tool["id"]
-    biotools_id = None
-    if "xrefs" in tool:
-        for item in tool["xrefs"]:
-            if item["reftype"] == "bio.tools":
-                biotools_id = item["value"]
-                break
-    if biotools_id is not None:
-        tool_id_list[galaxy_id] = biotools_id
+###################
+### some counts ###
+###################
+
+### number of workflows
+len(all_workflows_steps)
+
+### number of workflow tools (i.e. Galaxy IDs)
+len(workflow_galaxy_biotools_map)
+
+### number of workflow tools with biotools IDs
+biotools_count = 0
+for i in workflow_galaxy_biotools_map:
+    if workflow_galaxy_biotools_map[i]['biotools_id'] is not None:
+        biotools_count = biotools_count + 1
+print(biotools_count)
+
+### % of workflow tools with biotools IDs
+print(round((biotools_count/len(workflow_galaxy_biotools_map))*100))
 
 
 ###############################################
