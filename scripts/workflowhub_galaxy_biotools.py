@@ -99,9 +99,8 @@ for i in available_data:
 ####################################################################################################################################
 
 workflow_galaxy_biotools_map = {}
-
+my_workflows = {}
 for workflow in all_workflows_steps:
-    #print("workflow:", workflow)
     for wfh_galaxy_id in all_workflows_steps[workflow]:
         #print("wfh_galaxy_id:", wfh_galaxy_id)
         step_number = all_workflows_steps[workflow][wfh_galaxy_id]
@@ -109,12 +108,15 @@ for workflow in all_workflows_steps:
             biotools_id = galaxy_biotools_matches[wfh_galaxy_id]
         else:
             biotools_id = None
-        print(biotools_id)
+        #print(biotools_id)
         workflow_data = {}
         workflow_data['workflow_id'] = workflow
         workflow_data['biotools_id'] = biotools_id
         workflow_data['galaxy_workflow_step_number'] = step_number
         workflow_galaxy_biotools_map[wfh_galaxy_id] = workflow_data
+        if biotools_id is not None and my_workflows.get(workflow,[]) is not None:
+            print(workflow, biotools_id)
+            my_workflows[workflow] = my_workflows.get(workflow,[]) + [biotools_id]
 
 ###################
 ### some counts ###
@@ -131,10 +133,8 @@ biotools_count = 0
 for i in workflow_galaxy_biotools_map:
     if workflow_galaxy_biotools_map[i]['biotools_id'] is not None:
         biotools_count = biotools_count + 1
-print(biotools_count)
 
 ### % of workflow tools with biotools IDs
-print(round((biotools_count/len(workflow_galaxy_biotools_map))*100))
 
 
 ###############################################
@@ -150,6 +150,19 @@ print(round((biotools_count/len(workflow_galaxy_biotools_map))*100))
 ##### retain steps
 ##### step ID == galaxy ID
 ##### biotools ID
+
+
+from rdflib import URIRef, BNode, Literal, Graph
+from rdflib.namespace import SDO
+g = Graph()
+has_part = SDO.hasPart
+for workflow_id, biotools_ids in my_workflows.items():
+    for biotools_id in biotools_ids:
+        workflow_ent = URIRef(f"https://workflowhub.eu/workflows/{workflow_id}?version=1")
+        tool_ent = URIRef(f"https://bio.tools/{biotools_id}")
+        g.add((workflow_ent, has_part, tool_ent))
+g.serialize(destination="workflows_to_biotools.ttl")
+
 
 ###############################################
 
