@@ -1,6 +1,6 @@
 ---
-title: 'Scientific and technical enhancement of bioinformatics software metadata using the Tools Ecosystem open infrastructure'
-title_short: 'Enhancement of bioinformatics software metadata'
+title: 'Coverage of EDAM in Bio.tools : a semantic analysis of the Tools Ecosystem'
+title_short: 'Coverage of EDAM in Bio.tools'
 tags:
   - Software metadata
   - Ontologies
