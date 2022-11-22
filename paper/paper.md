@@ -9,7 +9,7 @@ tags:
   - Bioinformatics
 authors:
   - name: Lucie Lamothe
-    orcid: 
+    orcid: 0000-0002-4134-4040
     affiliation: 1
   - name: Jennifer Rugaard Bregndahl Jensen
     orcid: 
@@ -21,8 +21,8 @@ authors:
     orcid: 0000-0002-2977-5032
     affiliation: 6
   - name: Alban Gaignard
-    orcid: 
-    affiliation:
+    orcid: 0000-0002-3597-8557
+    affiliation: 11
   - name: Dmitry Repchevsky
     orcid: 0000-0001-6415-0532
     affiliation: 8, 9
@@ -65,6 +65,8 @@ affiliations:
     index: 9
   - name: Department of Informatics, University of Bergen, Norway
     index: 10
+  - name: L’institut du thorax, University of Nantes/CNRS/INSERM, France
+    index: 11
 date: 9 November 2022
 cito-bibliography: paper.bib
 event: BH22EU
@@ -116,7 +118,7 @@ To facilitate the analysis of the data extracted from the Tools Ecosystem and ot
 - the bio.tools contents [@providesDataFor:Ison2019], available on the Tools Platform Ecosystem git repository as a Turtle-formatted BioSchemas [@providesMethodFor:gray2017bioschemas] file at https://raw.githubusercontent.com/bio-tools/content/master/datasets/bioschemas-dump.ttl.
 - (add something here about the WorkflowHub [@usesDataFrom:carole_goble_2021_4605654] dump provided by Johan and Alban).
 
-The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter notebooks. The various results are visualized using python libraries such as matplotlib and R packages.
+The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter notebooks. The various results are visualized using python libraries such as matplotlib ~~and R packages~~ not anymore.
 
 # Perspectives
 
