@@ -34,7 +34,10 @@ authors:
     affiliation: 4, 5
   - name: Adrián Rošinec
     orcid: 0000-0002-7748-5590
-    affiliation: 4, 5
+    affiliation: 4, 11
+  - name: Matej Antol
+    orcid: 0000-0002-1380-5647
+    affiliation: 11
   - name: Magnus Palmblad
     orcid: 0000-0002-5865-8994 
     affiliation: 3
@@ -65,6 +68,8 @@ affiliations:
     index: 9
   - name: Department of Informatics, University of Bergen, Norway
     index: 10
+  - name: Institute of Computer Science, Masaryk University, Šumavská 15, 60200 Brno, Czech Republic
+    index: 11
 date: 9 November 2022
 cito-bibliography: paper.bib
 event: BH22EU
