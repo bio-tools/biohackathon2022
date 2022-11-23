@@ -95,15 +95,33 @@ We present here in a first section the results of these analyses, and in a secon
 
 ## EDAM usage in bio.tools
 
-_a barplot specifying which proportion of each EDAM section is used in bio.tools_
+_a nested pie plot specifying which proportion of each EDAM section is used in bio.tools_
+
+A valid concept is a concidered to be a concept which is neither deprecated nor "not recommandes for annotation" (, from the newest 1.26 development version not implmented in bio.tools). 
+
+### Topic:
+
+### Operation:
+
+### Data:
+
+### Format:
+
+Comments: 
+
+For the data and format section, a large number of valid concepts, respectively x (x%) and x (x%), are not used in bio.tools. This can be related to the poor annotation level of tools with data and format as either input or output and may be caused by the addition of tools via textmining of the literature (pub2tool ref), that only suggest annotation with EDAM operations and topics. This could also be caused by an interface issue when adding the tool's annotation with EDAM concepts in bio.tools. This could also highlight the presence of a large number of unecessary data and format concept polluting the ontology, and could lead a a curation of EDAM. 
+
+General comment: For each section of EDAM, deprecated concept are still used to annotate bio.tools entries (44 in total). (discussion on how to deal with deprecation in bio.tools?)
 
 _a barplot specifying which concepts of each section are most used for annotation in bio.tools_ 
 
 ## bio.tools annotation completeness
 
-_a Venn diagram specifying which proportion of bio.tools is annotated with topics/operations/data/formats (can you do this with a Venn?)_
+_a Venn diagram specifying which proportion of bio.tools is annotated with topics/operations/data_
 
 _an Upset diagram specifying which proportion of bio.tools is annotated with topics/operations/data/formats (can you do this with a Venn?)_
+
+96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). All operation in EDAM are linked to a data via a "has_input" and a "has_ouput" relation (using inferences from parent concepts). (perpective of input and output suggestion in bio.tools?)
 
 ## Tool function signatures
 
