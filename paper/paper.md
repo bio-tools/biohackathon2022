@@ -91,7 +91,7 @@ The goal of this project is to cross-compare and analyze the metadata centralize
 
 We present here in a first section the results of these analyses, and in a second section the methods and approach we used, before to discuss potential perspectives for improved monitoring and curation of the Tools Ecosystem metadata and EDAM, as well as the insights to the .
 
-# Results
+# Results and discussion
 
 ## EDAM usage in bio.tools
 
@@ -129,6 +129,11 @@ _a plot of the proportion of validated complete function signatures in bio.tools
 
 _a listing of the top 10 most erroneous function signatures in bio.tools_
 
+
+## Mapping between WorflowHub and bio.tools
+
+
+
 # Methods
 
 To facilitate the analysis of the data extracted from the Tools Ecosystem and other resources, we decided to make them available in a SPARQL endpoint, a solution that enables the querying of RDF resources. The various resources uploaded to a GraphDB-based SPARQL endpoint include:
@@ -138,7 +143,14 @@ To facilitate the analysis of the data extracted from the Tools Ecosystem and ot
 
 The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter notebooks. The various results are visualized using python libraries such as matplotlib ~~and R packages~~ not anymore.
 
+
+## Mapping between WorflowHub and bio.tools
+
+
 # Perspectives
+
+
+## Mapping between WorflowHub and bio.tools
 
 # Code availability
 
