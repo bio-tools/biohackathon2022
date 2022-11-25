@@ -95,45 +95,57 @@ We present here in a first section the results of these analyses, and in a secon
 
 ## EDAM usage in bio.tools
 
+For each section of the ontology (topic, operation, data, format) a nested pie plot displays the usage of concepts for annotating biotools entries. For each section a plot is displayed using the version 1.25  of EDAM and a another using the development version of EDAM. In the latest the new concepts are highleted as they are not available for annotation usage in bio.tools. 
+
 **Vocab:**
 
 Auxiliary concepts: concepts annotated with the property "notRecommandedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
 
-Valid concepts: concepts which are neither deprecated, from the newest 1.26 development version (not implmented in bio.tools) nor auxiliary. 
+Valid concepts: concepts which are neither deprecated, from the newest 1.26 development version (not implemented in bio.tools) nor auxiliary. 
 
 New concepts: concepts added to the ontology in the current development version (future 1.26)
-
-_a nested pie plot specifying which proportion of each EDAM section is used in bio.tools_
 
 
 ### Topic:
 
+<img src="./figures/dev_topic_usage_annot.png" width="1000"/> <img src="./figures/1-25_topic_usage_annot.png" width="1000"/> 
+
+
 ### Operation:
+
+<img src="./figures/dev_operation_usage_annot.png" width="1000"/> <img src="./figures/1-25_operation_usage_annot.png" width="1000"/> 
 
 Comment: All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommandedForAnnotation" for rightfully used concepts.
 
 ### Data:
 
+<img src="./figures/dev_data_usage_annot.png" width="1000"/>
+
+Here only one plot is shown as no new data concepts are currently added to the dev version of EDAM. 
+
 ### Format:
+
+<img src="./figures/dev_format_usage_annot.png" width="1000"/> <img src="./figures/1-25_format_usage_annot.png" width="1000"/> 
+
 
 Comments data and format: 
 
-For the data and format section, a large number of valid concepts, respectively x (x%) and x (x%), are not used in bio.tools. This can be related to the poor annotation level of tools with data and format as either input or output and may be caused by the addition of tools via textmining of the literature (pub2tool ref), that only suggest annotation with EDAM operations and topics. This could also be caused by an interface issue when adding the tool's annotation with EDAM concepts in bio.tools. This could also highlight the presence of a large number of unecessary data and format concept polluting the ontology, and could lead a curation of EDAM. 
+For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be related to the poor annotation level of tools with data and format as either input or output and may be caused by the addition of tools via textmining of the literature (pub2tool ref), that only suggest annotation with EDAM operations and topics. This could also be caused by an interface issue when adding the tool's annotation with EDAM concepts in bio.tools. This could also highlight the presence of a large number of unnecessary data and format concept polluting the ontology, and could lead a curation of EDAM. 
 
 For format more than half the auxiliary concepts are used to annotate. For data 46% of auxiliary concepts are used in bio.tools. We should investigate to identify where this usage error is coming from. It could be EDAM concepts that should not be tagged as auxiliary, missing subconcept in EDAM that could replace the usage of the auxiliary concept, or a wrong annotation of the tool. 
 
 General comment: For each section of EDAM, deprecated concept are still used to annotate bio.tools entries (44 in total). (discussion on how to deal with deprecation in bio.tools?)
 
 
-_a barplot specifying which concepts of each section are most used for annotation in bio.tools_ 
-
 ## bio.tools annotation completeness
 
-_a Venn diagram specifying which proportion of bio.tools is annotated with topics/operations/data_
+  <img src="./figures/venn_annotation_biotools_collapsed.png" width="1000"/>  <img src="./figures/upsetplot_annotation_biotools.png" width="700"/> 
 
-_an Upset diagram specifying which proportion of bio.tools is annotated with topics/operations/data/formats (can you do this with a Venn?)_
+83.3% of tools are annotated with both topic and operation, the most used annotation fir search in (is that right???). 
 
-96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). All operations in EDAM are linked to a data via a "has_input" and a "has_ouput" relation (using inferences from parent concepts). (perpective of input and output suggestion in bio.tools?)
+In the 297% of not annotated tools, a portion may be spam tools, this should be investigated. (perpective of queries to determine most likely spam tools)
+
+96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). All operations in EDAM are linked to a data via a "has_input" and a "has_ouput" relation (using inferences from parent concepts). This lack of annotation may not be a true problem for human user that can easily deduce input and output from operation but it can be a problem from the machine readability point of vue. Moreover, with proper annotation, automatic workflow generation could be conceivable using bio.tools metadata and other software metadata from the Ecosystem. A perpective could be that for each operation added to the tool's annotation, input and output would be suggested to the curator/author based on EDAM relation. The same could go for suggestion of format based on data (##see how many data are linked to format). For human user we could also have in the bio.tools interface a "suggested input/output" that would be displayed on the tool page but clearly identifed as an unverified annotation. 
 
 ## Tool function signatures
 
@@ -163,13 +175,13 @@ The analysis of the data is performed using SPARQL queries, which are performed 
 
 ## SPARQL endpoint
 
-For this project we decided to turn to a commercial solution to query EDAM and bio.tools datasets. GraphDB has the advatage of being easily set up by anyone. In the future we will provide a publicly avaiblable SPARQL endpoint using an opensource software (e.g Virtuoso). The goal would be for anyone to be able to query all datasets (for now EDAM and bio.tools but other datasets will be generated in the future) and our queries to be run periodically. It could also be used to improve EDAM CI tool (add ref to caseologue). 
+For this project we decided to turn to a commercial solution to query EDAM and bio.tools datasets. GraphDB has the advatage of being easily set up by anyone. In the future we will provide a publicly available SPARQL endpoint using an opensource software (e.g Virtuoso). The goal would be for anyone to be able to query all datasets (for now EDAM and bio.tools but other datasets will be generated in the future) and our queries to be run periodically. It could also be used to improve EDAM CI tool (add ref to caseologue). 
 
 ## EDAM and Bio.tools analysis
 
 - Base ground set, lots of analysis to come
 - Identified Curation tasks
-- Graphs and queries periodicaly updated and uploaded for maintaners and public. 
+- Graphs and queries periodically updated and uploaded for maintainers and public. 
 - 
 
 ## Mapping between WorflowHub and bio.tools
