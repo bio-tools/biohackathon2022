@@ -110,8 +110,8 @@ New concepts: concepts added to the ontology in the current development version 
 
 ### Topic:
 
-![]("figures/dev_topic_usage_annot.png") 
-![]("figures/1-25_topic_usage_annot.png")
+![]("./figures/dev_topic_usage_annot.png") 
+![]("./figures/1-25_topic_usage_annot.png")
 
 Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users(, or they are too wide and the annotation are not precise enough. We need to investigate if more topics are needed. ## second part relevant?)
 
