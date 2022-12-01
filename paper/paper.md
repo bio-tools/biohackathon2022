@@ -94,6 +94,10 @@ We present here in a first section the results of these analyses, and in a secon
 
 ## EDAM usage in bio.tools
 
+These analyses assess the usage of EDAM concepts in bio.tools for each of its four sections, and evaluate first the proportion of the concepts used to annotate entries, and second relate their usage status to their suitability for annotation: some EDAM concepts, obsolete or auxiliairy, should not be used for annotations. 
+
+This usage analysis has been performed each time with two versions of EDAM: the last stable release (1.25), and the current development version (insert commit hash here): this allows to foresee the impact of the future release of EDAM on bio.tools annotations.
+
 For each section of the ontology (topic, operation, data, format) a nested pie plot displays the usage of concepts for annotating biotools entries. For each section a plot is displayed using the development version of EDAM and a another using the version 1.25 of EDAM. In the first, the new concepts are highleted as they are not available for annotation usage in bio.tools. 
 
 **Vocab:**
