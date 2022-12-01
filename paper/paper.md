@@ -100,7 +100,7 @@ For each section of the ontology (topic, operation, data, format) a nested pie p
 
 Obsolete concepts: concepts that were juged to be obsolete in a later version but are not deleted from the owl ontology file. They are marked as deprecated but can still be referenced with their URI.
 
-Auxiliary concepts: concepts annotated with the property "notRecommandedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
+Auxiliary concepts: concepts annotated with the property "notRecommendedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
 
 Valid concepts: concepts which are neither deprecated, from the newest 1.26 development version (not implemented in bio.tools) nor auxiliary. 
 
@@ -118,7 +118,7 @@ Almost all valid topics are used in the ontology. This could mean that EDAM is p
 
 <img src="./figures/dev_operation_usage_annot.png" width="1000"/> <img src="./figures/1-25_operation_usage_annot.png" width="1000"/> 
 
-All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommandedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. 
+All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommendedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. 
 
 ### Data and Format:
 
