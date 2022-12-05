@@ -104,18 +104,14 @@ Obsolete concepts: concepts that were juged to be obsolete in a later version bu
 
 Auxiliary concepts: concepts annotated with the property "notRecommendedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
 
-Valid concepts: concepts which are neither deprecated, from the newest 1.26 development version (not implemented in bio.tools) nor auxiliary. 
+Valid concepts: concepts which are neither deprecated, nor auxiliary. 
 
-New concepts: concepts added to the ontology in the current development version (future 1.26)
+New (valid) concepts: concepts added to the ontology in the current development version (future 1.26)
 
 
 ### Topic:
 
-![](figures/dev_topic_usage_annot.png){width=50%} ![](figures/1-25_topic_usage_annot.png){width=50%}
-
-+-------------------------------------+-----------------------------------------+
-|![](figures/dev_topic_usage_annot.png) | ![](figures/1-25_topic_usage_annot.png)|
-+-------------------------------------+-----------------------------------------+
+![](figures/topic_usage.png){width=100%}
 
 
 
@@ -123,18 +119,17 @@ Almost all valid topics are used in the ontology. This could mean that EDAM is p
 
 ### Operation:
 
-<img src="./figures/dev_operation_usage_annot.png" width="1000"/> <img src="./figures/1-25_operation_usage_annot.png" width="1000"/> 
+![](figures/operation_usage.png){width=100%}
 
 All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommendedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. ( pub2tool, can it annotate with auxialliary concept )
 
 ### Data and Format:
 
-<img src="./figures/dev_data_usage_annot.png" width="1000"/>
+![](figures/data_usage.png){width=100%}
 
 Here only one plot is shown as no new data concepts are currently added to the dev version of EDAM. 
 
-<img src="./figures/dev_format_usage_annot.png" width="1000"/> <img src="./figures/1-25_format_usage_annot.png" width="1000"/> 
-
+![](figures/format_usage.png){width=100%}
 
 Comments data and format: 
 
@@ -151,7 +146,9 @@ General comment: For each section of EDAM, 44 deprecated concept are still used 
 
 ## bio.tools annotation completeness
 
-  <img src="./figures/venn_annotation_biotools_collapsed.png" width="1000"/>  <img src="./figures/upsetplot_annotation_biotools.png" width="700"/> 
+![](figures/venn_biotools_entries_annot.png){width=100%}
+
+![](figures/upset_biotools_entries_annot.png){width=100%}
 
 95.7% of tools are annotated with both topic and operation. This result is very encouraging. thanks to pub2tool
 
