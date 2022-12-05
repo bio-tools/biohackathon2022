@@ -119,13 +119,13 @@ New concepts: concepts added to the ontology in the current development version 
 
 
 
-Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users(, or they are too wide and the annotation are not precise enough. We need to investigate if more topics are needed. ## second part relevant?)
+Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users(, or they are too wide and the annotation are not precise enough. We need to investigate if more topics are needed. ## second part relevant? Question the author of pub2tool to check for a methodological bias example if it wants to cover all topics are not)
 
 ### Operation:
 
 <img src="./figures/dev_operation_usage_annot.png" width="1000"/> <img src="./figures/1-25_operation_usage_annot.png" width="1000"/> 
 
-All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommendedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. 
+All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommendedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. ( pub2tool, can it annotate with auxialliary concept )
 
 ### Data and Format:
 
@@ -138,11 +138,13 @@ Here only one plot is shown as no new data concepts are currently added to the d
 
 Comments data and format: 
 
-For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be a consequence of the poor annotation level of tools with data and format as either input or output (see bellow). It may also be caused by the addition of tools via textmining of the literature (pub2tool ref), that only suggest annotation with EDAM operations and topics. Moreover, it may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools. This could also highlight the presence of a large number of unnecessary data and format concept polluting the ontology, and could lead a curation of EDAM. 
+For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be a consequence of the poor annotation level of tools with data and format as either input or output (see bellow). It may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools. This could also be explained by the fact that bio.tools doesn't cover as much of bioinformatics feilds as EDAM. 
+
+Moreover, for the data section, some subconcept may be too precise for tools annotation and/or labels alone may not be self-explanatory enough. As an example, no tools are using "Alpha diversity", "Beta diversity", and "Gamma diversity" whereas "Biodiversity data", their parent class, a more general concept, is used several times. 
+
+Concerning formats, a file format that is not used by the "modern" scientific community cannot be automatically deprecated as it is still used by older tools and can still be found in databases. This may explain the lack of usage of some valid tools in bio.tools. (does pub2tool mine older tools? otherwise this may also explain) 
 
 For format more than half the auxiliary concepts are used to annotate. For data 46% of auxiliary concepts are used in bio.tools. We should investigate to identify where this usage error is coming from. It could be EDAM concepts that should not be tagged as auxiliary, missing subconcept in EDAM that could replace the usage of the wider auxiliary concept, or a wrong annotation of the tool. 
-
-For formats, it seems that no obsolete concepts were used to annotate bio.tools entiries. It may be due to the low usage of format in bio.tools entires annotation (see bellow) or that all obsolete concepts were already unused when they were added to EDAM. 
 
 General comment: For each section of EDAM, 44 deprecated concept are still used to annotate 1213 bio.tools entries. (discussion on how to deal with deprecation in bio.tools?)
 
@@ -151,11 +153,13 @@ General comment: For each section of EDAM, 44 deprecated concept are still used 
 
   <img src="./figures/venn_annotation_biotools_collapsed.png" width="1000"/>  <img src="./figures/upsetplot_annotation_biotools.png" width="700"/> 
 
-95.7% of tools are annotated with both topic and operation, the most used annotation for search in bio.tools (is that right???). This result is very encouraging.
+95.7% of tools are annotated with both topic and operation. This result is very encouraging. thanks to pub2tool
 
-In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated. (perpective of queries to determine most likely spam tools)
+In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated.
 
-96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). All operations in EDAM are linked to a data via a "has_input" and a "has_ouput" relation (using inferences from parent concepts). This lack of annotation may not be a true problem for human user that can easily deduce input and output from operation but it can be a problem from the machine readability point of vue. Moreover, with proper annotation, automatic workflow generation could be conceivable using bio.tools metadata and other software metadata from the Ecosystem. A perpective could be that for each operation added to the tool's annotation, input and output would be suggested to the curator/author based on EDAM relation. The same could go for suggestion of format based on relation with data in EDAM. 533 formats (over the 619 valid formats) are related to a data with the "is_format_of" relation. For human user we could also have in the bio.tools interface a "suggested input/output" that would be displayed on the tool page but clearly identifed as an unverified annotation. 
+96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). All operations in EDAM are linked to a data via a "has_input" and a "has_ouput" relation (using inferences from parent concepts). This lack of annotation may not be a true problem for human user that can easily deduce input and output from operation but it can be a problem from the machine readability point of vue. Moreover, with proper annotation, automatic workflow generation could be conceivable using bio.tools metadata and other software metadata from the Ecosystem. A perpective could be that for each operation added to the tool's annotation, input and output would be suggested to the curator/author based on EDAM relation. The same could go for suggestion of format based on relation with data in EDAM. 533 formats (over the 619 valid formats) are related to a data with the "is_format_of" relation. For human user we could also have in the bio.tools interface a "suggested input/output" that would be displayed on the tool page but clearly identifed as an unverified annotation. (move the suggestion part in perpective)
+
+[[It may also be caused by the addition of tools via textmining of the literature (pub2tool ref), that only suggest annotation with EDAM operations and topics. Moreover, it may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools.]]=> move to bio.tools annotation completeness analysis.
 
 ## Tool function signatures
 
@@ -243,6 +247,12 @@ For this project we decided to turn to a commercial solution to query EDAM and b
 - Identified Curation tasks
 - Graphs and queries periodically updated and uploaded for maintainers and public. 
 - 
+
+note: pub2tool, metadata about provenance of annotation in bio.tools (manual or pub2tool)
+
+handling of deprecation in bio.tools, explanation, suggestion = for replaced by we could have an automated reassignation, for consider => how to handle? manually? with a textmining tool? 
+
+bio.tools interface perpective for data and format 
 
 ## Mapping between WorkflowHub and bio.tools
 
