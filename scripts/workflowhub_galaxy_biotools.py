@@ -115,7 +115,7 @@ def get_workflowhub_space_workflow_data(url):
         ### keep only Galaxy workflows!
         if workflow_metadata['data']['attributes']['workflow_class']['key'] == "galaxy":
             available_data[id] = workflow_metadata
-            print(id)
+            #print(id)
 
     return(available_data)
 
@@ -130,7 +130,7 @@ def extract_workflow_steps_as_galaxy_ids(workflowhub_data):
             description = steps[j]['description']
             ident = steps[j]['id']
             #print(ident)
-            print(description)
+            #print(description)
             ### https://stackoverflow.com/a/12595082
             ### example toolshed ID toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.20+galaxy2
             ### https://stackoverflow.com/a/4843178
