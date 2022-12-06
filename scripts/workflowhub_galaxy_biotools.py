@@ -47,8 +47,41 @@ def get_biotools_ID_from_galaxy_tools(galaxy_tools_list):
             galaxy_biotools_matches[galaxy_id_no_version] = biotools_id
     return(galaxy_biotools_matches)
 
-galaxy_api_tools = galaxy_api_request(url = "https://usegalaxy.org.au/api/tools")
-galaxy_extracted_biotools_ids = get_biotools_ID_from_galaxy_tools(galaxy_tools_list = galaxy_api_tools)
+########################
+### GALAXY AUSTRALIA ###
+########################
+galaxy_AU_tools = galaxy_api_request(url = "https://usegalaxy.org.au/api/tools")
+galaxy_AU_extracted_biotools_ids = get_biotools_ID_from_galaxy_tools(galaxy_tools_list = galaxy_AU_tools)
+
+
+#####################
+### GALAXY EUROPE ###
+#####################
+galaxy_Eu_tools = galaxy_api_request(url = "https://usegalaxy.eu/api/tools")
+galaxy_Eu_extracted_biotools_ids = get_biotools_ID_from_galaxy_tools(galaxy_tools_list = galaxy_Eu_tools)
+
+
+########################################
+### Combined Galaxies bio.tools list ###
+########################################
+
+def combine_two_galaxy_tools_lists(extracted_biotools_list_1, extracted_biotools_list_2):
+
+    combined_galaxy_biotools_matches = {}
+
+    for galaxy_tool in extracted_biotools_list_1:
+        biotools_id = extracted_biotools_list_1[galaxy_tool]
+        combined_galaxy_biotools_matches[galaxy_tool] = biotools_id
+
+    for galaxy_tool in extracted_biotools_list_2:
+        if galaxy_tool not in combined_galaxy_biotools_matches:
+            biotools_id = extracted_biotools_list_2[galaxy_tool]
+            combined_galaxy_biotools_matches[galaxy_tool] = biotools_id
+
+    return(combined_galaxy_biotools_matches)
+
+
+eu_au_tools_list = combine_two_galaxy_tools_lists(galaxy_Eu_extracted_biotools_ids, galaxy_AU_extracted_biotools_ids)
 
 
 ##############################################################
@@ -82,6 +115,7 @@ def get_workflowhub_space_workflow_data(url):
         ### keep only Galaxy workflows!
         if workflow_metadata['data']['attributes']['workflow_class']['key'] == "galaxy":
             available_data[id] = workflow_metadata
+            print(id)
 
     return(available_data)
 
@@ -95,21 +129,28 @@ def extract_workflow_steps_as_galaxy_ids(workflowhub_data):
         for j in range(0, len(steps)):
             description = steps[j]['description']
             ident = steps[j]['id']
+            #print(ident)
+            print(description)
             ### https://stackoverflow.com/a/12595082
             ### example toolshed ID toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.20+galaxy2
-            match_string = "toolshed.g2.bx.psu.edu/repos/.+/.+/.+/[0-9A-Za-z\\.\\+]{3,20}"
-            if re.search(match_string, description):
-                # https://stackoverflow.com/a/15340694
-                pattern = re.compile(match_string)
-                extracted_description = pattern.search(description)
-                extracted_galaxy_id = "/".join(extracted_description.group(0).split("/")[:-1])
-                workflow_steps[extracted_galaxy_id] = ident
-            all_workflows_steps[i] = workflow_steps
+            ### https://stackoverflow.com/a/4843178
+            if isinstance(description, str):
+                match_string = "toolshed.g2.bx.psu.edu/repos/.+/.+/.+/[0-9A-Za-z\\.\\+]{3,20}"
+                if re.search(match_string, description):
+                    # https://stackoverflow.com/a/15340694
+                    pattern = re.compile(match_string)
+                    extracted_description = pattern.search(description)
+                    extracted_galaxy_id = "/".join(extracted_description.group(0).split("/")[:-1])
+                    workflow_steps[extracted_galaxy_id] = ident
+                    all_workflows_steps[i] = workflow_steps
     return(all_workflows_steps)
 
 
 biocommons_space_workflows = get_workflowhub_space_workflow_data(url = "https://workflowhub.eu/programmes/8/workflows.json")
 biocommons_workflow_steps = extract_workflow_steps_as_galaxy_ids(workflowhub_data = biocommons_space_workflows)
+
+all_workflows = get_workflowhub_space_workflow_data(url = "https://workflowhub.eu/workflows.json")
+all_workflow_steps = extract_workflow_steps_as_galaxy_ids(workflowhub_data = all_workflows)
 
 
 ####################################################################################################################################
@@ -153,8 +194,8 @@ def map_workflow_steps_to_galaxy_biotools_ids(workflow_steps, biotools_IDs_from_
 
 
 final_mapping_workflowhub_galaxy_biotools = map_workflow_steps_to_galaxy_biotools_ids(
-    workflow_steps = biocommons_workflow_steps,
-    biotools_IDs_from_galaxy = galaxy_extracted_biotools_ids
+    workflow_steps = all_workflow_steps,
+    biotools_IDs_from_galaxy = eu_au_tools_list
 )
 
 
@@ -184,7 +225,7 @@ def get_workflows_for_ttl_conversion(mapping_workflowhub_biotools):
     return(my_workflows)
 
 
-biocommons_workflows_for_ttl_conversion = get_workflows_for_ttl_conversion(
+all_workflows_for_ttl_conversion = get_workflows_for_ttl_conversion(
     mapping_workflowhub_biotools = final_mapping_workflowhub_galaxy_biotools
 )
 
@@ -208,7 +249,7 @@ from rdflib import URIRef, BNode, Literal, Graph
 from rdflib.namespace import SDO
 g = Graph()
 has_part = SDO.hasPart
-for workflow_id, biotools_ids in biocommons_workflows_for_ttl_conversion.items():
+for workflow_id, biotools_ids in all_workflows_for_ttl_conversion.items():
     for biotools_id in biotools_ids:
         workflow_ent = URIRef(f"https://workflowhub.eu/workflows/{workflow_id}?version=1")
         tool_ent = URIRef(f"https://bio.tools/{biotools_id}")
