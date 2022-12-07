@@ -116,24 +116,14 @@ New (valid) concepts: concepts added to the ontology in the current development 
 ### Topic:
 
 ![](figures/topic_usage.png){width=100%}
-<<<<<<< HEAD
-=======
-
->>>>>>> paper
 
 
 Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users. This result doesn't guaranty that the topic section is extensive or precise enough, as topics can be used as default for lack of better available concept. We need to investigate if more topics are needed.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 581de5160cbdca87ad373f1a9afc5cb71ca33f52
 Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users(, or they are too wide and the annotation are not precise enough. We need to investigate if more topics are needed. ## second part relevant? Question the author of pub2tool to check for a methodological bias example if it wants to cover all topics are not)
-=======
+
 => Question the author of pub2tool to check for a methodological bias example if it wants to cover all topics are not ask  Erik Jaaniso @jaanisoe - erik.jaaniso@ut.ee
 
->>>>>>> paper
 
 ### Operation:
 
@@ -168,20 +158,18 @@ General comment: For each section of EDAM, 44 deprecated concept are still used 
 ## bio.tools annotation completeness
 
 ![](figures/venn_biotools_entries_annot.png){width=100%}
-<<<<<<< HEAD
 
-![](figures/upset_biotools_entries_annot.png){width=100%}
-=======
->>>>>>> paper
 
 ![](figures/upset_biotools_entries_annot.png){width=100%}
 
-<<<<<<< HEAD
+
+![](figures/upset_biotools_entries_annot.png){width=100%}
+
 
 In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated.
-=======
+
 Thanks to the text mining software pub2tool that run through published articles and generated EDAM annotation for tools, 95.7% of tools are annotated with both topic and operation. This result is very encouraging.
->>>>>>> paper
+
 
 With our version of the bio.tools BioSchema dump, 297 tools are totally missing EDAM annotation. When investigating this number, it seems that since the generation of the dump some of the tools have been annotating (when comparing to the ). We will be able to investigate further these tools when updating our Bioshemas dump. As of the 6th of December, preliminary exploration shows that some of the non-annotated tools are annotation errors, meaning that suitable EDAM concepts are available for the annotation, others are non annotated because of lack of concept. Example: HIV-ASSIST: lack of topic and operation concerning training materials/platform. 2dar2darma-param-estimation: available operation are "Imagine analysis" (http://edamontology.org/operation_3443) and "Modelling and simulation" (http://edamontology.org/operation_2426), and available topic are "Oncology" (http://edamontology.org/topic_2640).
 
