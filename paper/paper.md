@@ -104,24 +104,19 @@ This analysis allows us to asses the quality of EDAM and bio.tools and reveal so
 
 **Vocab:**
 
-Obsolete concepts: concepts that were judged to be obsolete in a later version but are not deleted from the owl ontology file. They are marked as deprecated but can still be referenced with their URI.
+*Obsolete concepts*: concepts that were judged to be obsolete in a later version but are not deleted from the owl ontology file. They are marked as deprecated but can still be referenced with their URI.
 
-Auxiliary concepts: concepts annotated with the property "notRecommendedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
+*Auxiliary concepts*: concepts annotated with the property "notRecommendedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
 
-Valid concepts: concepts which are neither deprecated, nor auxiliary. 
+*Valid concepts*: concepts which are neither deprecated, nor auxiliary. 
 
-New (valid) concepts: concepts added to the ontology in the current development version (future 1.26)
+*New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26)
 
 
 ### Topic:
-<style>
-td, th {
-   border: none!important;
-}
-</style>
-|![](figures/topic_usage.png){width=100%}|
-|--|
-| Caption |
+
+![](figures/topic_usage.png){width=100%}
+
 
 
 Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users. This result doesn't guaranty that the topic section is extensive or precise enough, as topics can be used as default for lack of better available concept. We need to investigate if more topics are needed.
