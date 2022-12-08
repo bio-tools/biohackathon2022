@@ -114,9 +114,13 @@ New (valid) concepts: concepts added to the ontology in the current development 
 
 
 ### Topic:
-
+<style>
+td, th {
+   border: none!important;
+}
+</style>
 |![](figures/topic_usage.png){width=100%}|
-|:--:|
+|--|
 | Caption |
 
 
