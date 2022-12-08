@@ -115,7 +115,9 @@ New (valid) concepts: concepts added to the ontology in the current development 
 
 ### Topic:
 
-![](figures/topic_usage.png){width=100%}
+|![](figures/topic_usage.png){width=100%}|
+|:--:|
+| Caption |
 
 
 Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users. This result doesn't guaranty that the topic section is extensive or precise enough, as topics can be used as default for lack of better available concept. We need to investigate if more topics are needed.
@@ -141,7 +143,6 @@ Here only one plot is shown as no new data concepts are currently added to the d
 
 ![](figures/format_usage.png){width=100%}
 
-Comments data and format: 
 
 For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be a consequence of the poor annotation level of tools with data and format as either input or output (see below). It may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools. This could also be explained by the fact that bio.tools doesn't cover as much of bioinformatics fields as EDAM. 
 
@@ -153,14 +154,13 @@ Concerning formats, a file format that is not used by the "modern" scientific co
 
 For format more than half the auxiliary concepts are used to annotate. For data 46% of auxiliary concepts are used in bio.tools. We should investigate to identify where this usage error is coming from. It could be EDAM concepts that should not be tagged as auxiliary, missing subconcept in EDAM that could replace the usage of the wider auxiliary concept, or a wrong annotation of the tool. 
 
-General comment: For each section of EDAM, 44 deprecated concept are still used to annotate 1213 bio.tools entries. Handling of deprecated concepts is discussed below. 
+### General comment
+
+ For each section of EDAM, 44 deprecated concept are still used to annotate 1213 bio.tools entries. Handling of deprecated concepts is discussed below. 
 
 ## bio.tools annotation completeness
 
 ![](figures/venn_biotools_entries_annot.png){width=100%}
-
-
-![](figures/upset_biotools_entries_annot.png){width=100%}
 
 
 ![](figures/upset_biotools_entries_annot.png){width=100%}
