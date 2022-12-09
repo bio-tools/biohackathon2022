@@ -177,6 +177,9 @@ With our version of the bio.tools BioSchema dump, 297 tools are totally missing 
 
 ## Tool function signatures
 
+![](figures/data_format_relation.png){width=100%}
+
+
 _a plot of the proportion of validated complete function signatures in bio.tools_
 
 _a listing of the top 10 most erroneous function signatures in bio.tools_
