@@ -187,7 +187,7 @@ Here we will only study the "is_format_of" relation.
 
 Table: Most used relation in Bio.tools, unconfirmed by EDAM
 |format|label format|data|label data|count|
-|---|---|---|---|---|
+|:---:|:---:|:---:|:---:|:---:|
 |http://edamontology.org/format_2330|Textual format|http://edamontology.org/data_0006|Data|171|
 |http://edamontology.org/format_1929|FASTA|http://edamontology.org/data_2044|Sequence|135|
 |http://edamontology.org/format_3475|TSV|http://edamontology.org/data_0006|Data|128|
