@@ -100,16 +100,18 @@ To analyze bio.tools, a Bioschemas dump has been generated using a json file for
 
 This analysis allows us to asses the quality of EDAM and bio.tools and reveal some curation priorities to improve both datasets. Some of the results still need further analysis and for some only conjectures were drawn.
 
-**Vocab:**
+---
+**EDAM Concept categories**
 
-*Obsolete concepts*: concepts that were judged to be obsolete in a later version but are not deleted from the owl ontology file. They are marked as deprecated but can still be referenced with their URI.
+*Obsolete concepts*: concepts that are judged to be obsolete in the current version. They are marked as deprecated but can still be referenced with their URI.
 
-*Auxiliary concepts*: concepts annotated with the property "notRecommendedForAnnotation". This concept are usually placeholders to organize other sub-concepts and should not be use to annotate
+*Auxiliary concepts*: concepts which are usually placeholders to organize other sub-concepts and should not be used for annotation purposes. Technically speaking, these are identified using the "notRecommendedForAnnotation" property.
 
-*Valid concepts*: concepts which are neither deprecated, nor auxiliary. 
+*Valid concepts*: concepts which are valid for annotation (neither deprecated, nor auxiliary). 
 
-*New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26)
+*New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26).
 
+---
 
 ### Topics:
 
