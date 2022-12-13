@@ -84,21 +84,19 @@ authors_short: Lucie Lamothe,  Jennifer Rugaard Bregndahl Jensen \emph{et al.}
 
 # Introduction
 
-The Tools Ecosystem is a centralized repository for the open and transparent exchange of metadata about software tools and services in bioinformatics and life sciences. It serves as a foundation for the sustainability of the diverse Tools Platform services, and for the interoperability between all these essential services: bio.tools [@usesDataFrom:Ison2019], BioContainers [@usesDataFrom:10.1093/bioinformatics/btx192], OpenEBench, Bioconda, WorkflowHub, usegalaxy.eu. It also includes a number of related resources outside of the ELIXIR Tools Platform (e.g. Debian Med, biii.eu).
+The [Tools Ecosystem](https://github.com/bio-tools/content/) is a centralized repository for the open and transparent exchange of metadata about software tools and services in bioinformatics and life sciences. It serves as a foundation for the sustainability of the diverse Tools Platform services, and for the interoperability between all these essential services: bio.tools [@usesDataFrom:Ison2019], BioContainers [@usesDataFrom:10.1093/bioinformatics/btx192], OpenEBench, Bioconda, WorkflowHub, usegalaxy.eu. It also includes a number of related resources outside of the ELIXIR Tools Platform (e.g. Debian Med, biii.eu).
 
-The goal of this project is to cross-compare and analyze the metadata centralized in the Tools Ecosystem, together with the EDAM ontology [@providesDataFor:10.1093/bioinformatics/btt113] links used for many annotations of these resources. Eventually, we expect to get a better understanding of these metadata and their relations, and improve them by designing tools and processes that detect curation bottlenecks, perform rigorous data cross-validation, and generate detailed reporting about potential issues and actionable items. 
-
-We present here in a first section the results of these analyses, and in a second section the methods and approach we used, before to discuss potential perspectives for improved monitoring and curation of the Tools Ecosystem metadata and EDAM.
+Here we report the results of a project started at the [BioHackathon Europe 2022](https://biohackathon-europe.org/). Its goal is to cross-compare and analyze the metadata centralized in the Tools Ecosystem, together with the EDAM ontology [@providesDataFor:10.1093/bioinformatics/btt113] links used for many annotations of these resources. We present here in a first section the results of these analyses, and in a second section the methods and approach we used, before to discuss potential perspectives for improved monitoring and curation of the Tools Ecosystem metadata and EDAM.
 
 # Results and discussion
 
 ## EDAM usage in bio.tools
 
-These analyses assess the usage of EDAM concepts in bio.tools for each of its four sections, and evaluate first the proportion of the concepts used to annotate entries, and second relate their usage status to their suitability for annotation: some EDAM concepts, obsolete or auxiliary, should not be used for annotations. 
+These analyses assess the usage of EDAM concepts in bio.tools for each of its four sections. We first evaluate the proportion of the EDAM concepts used to annotate entries, and second relate their usage status to their suitability for annotation: some EDAM concepts, obsolete or auxiliary, should not be used for annotations. 
 
 This usage analysis has been performed each time with two versions of EDAM: the last stable release (1.25) currently used in bio.tools, and the current development version (commit hash: 38f21c1edf839efa5d957395f9495562cc7dc1f8): this allows to foresee the impact of the future release of EDAM on bio.tools annotations.
 
-To analyze bio.tools, a Bioschemas dump have been generated using json file for each tool, generated up to the beginning of 2022. Some information may be out of date compared to the bio.tools website at the time of the analysis but the main tendencies are still very relevant. 
+To analyze bio.tools, a Bioschemas dump has been generated using a json file for each tool, generated up to the beginning of 2022. A minor proportion of this information may be out of date compared to the bio.tools website at the time of the analysis, however the main tendencies are still relevant. 
 
 This analysis allows us to asses the quality of EDAM and bio.tools and reveal some curation priorities to improve both datasets. Some of the results still need further analysis and for some only conjectures were drawn.
 
@@ -113,7 +111,7 @@ This analysis allows us to asses the quality of EDAM and bio.tools and reveal so
 *New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26)
 
 
-### Topic:
+### Topics:
 
 ![](figures/topic_usage.png){width=100%}
 
@@ -126,7 +124,7 @@ Almost all valid topics are used in the ontology. This could mean that EDAM is p
 => Question the author of pub2tool to check for a methodological bias example if it wants to cover all topics are not ask  Erik Jaaniso @jaanisoe - erik.jaaniso@ut.ee
 
 
-### Operation:
+### Operations:
 
 ![](figures/operation_usage.png){width=100%}
 
@@ -134,7 +132,7 @@ All auxiliary operations are used to annotate tools. We should curate EDAM to re
 
 => pub2tool, can it annotate with auxiliary concept? 
 
-### Data and Format:
+### Data and Formats:
 
 ![](figures/data_usage.png){width=100%}
 
@@ -155,7 +153,7 @@ For format more than half the auxiliary concepts are used to annotate. For data 
 
 ### General comment
 
- For each section of EDAM, 44 deprecated concept are still used to annotate 1213 bio.tools entries. Handling of deprecated concepts is discussed below. 
+For each section of EDAM, 44 deprecated concepts are still used to annotate 1213 bio.tools entries. Handling of deprecated concepts is discussed below. 
 
 ## bio.tools annotation completeness
 
@@ -170,7 +168,7 @@ In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, th
 Thanks to the text mining software pub2tool that run through published articles and generated EDAM annotation for tools, 95.7% of tools are annotated with both topic and operation. This result is very encouraging.
 
 
-With our version of the bio.tools BioSchema dump, 297 tools are totally missing EDAM annotation. When investigating this number, it seems that since the generation of the dump some of the tools have been annotating (when comparing to the ). We will be able to investigate further these tools when updating our Bioshemas dump. As of the 6th of December, preliminary exploration shows that some of the non-annotated tools are annotation errors, meaning that suitable EDAM concepts are available for the annotation, others are non annotated because of lack of concept. Example: HIV-ASSIST: lack of topic and operation concerning training materials/platform. 2dar2darma-param-estimation: available operation are "Imagine analysis" (http://edamontology.org/operation_3443) and "Modelling and simulation" (http://edamontology.org/operation_2426), and available topic are "Oncology" (http://edamontology.org/topic_2640).
+With our version of the bio.tools BioSchema dump, 297 tools are totally missing EDAM annotation. When investigating this number, it seems that since the generation of the dump some of the tools have been annotating (when comparing to the ). We will be able to investigate further these tools when updating our Bioschemas dump. As of the 6th of December, preliminary exploration shows that some of the non-annotated tools are annotation errors, meaning that suitable EDAM concepts are available for the annotation, others are non annotated because of lack of concept. Example: HIV-ASSIST: lack of topic and operation concerning training materials/platform. 2dar2darma-param-estimation: available operations are "Image analysis" (http://edamontology.org/operation_3443) and "Modelling and simulation" (http://edamontology.org/operation_2426), and available topic are "Oncology" (http://edamontology.org/topic_2640).
 
 
 96.2 % of tools are annotated with operation versus only 12.5% with input or output data (and as a consequence even less with format). This lack of annotation may not be a true problem for human user that can easily deduce input and output from operation but it can be a problem from the machine readability point of vue. Moreover, with proper annotation, automatic workflow generation could be conceivable using bio.tools metadata and other software metadata from the Ecosystem. This lack of annotation with data and format may be caused by the addition of tools via pub2tool. The software only suggest annotation with EDAM operations and topics. Moreover, it may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools.
@@ -269,6 +267,8 @@ The functions described are available here: https://github.com/bio-tools/biohack
 
 
 # Perspectives
+
+_Eventually, we expect to get a better understanding of these metadata and their relations, and improve them by designing tools and processes that detect curation bottlenecks, perform rigorous data cross-validation, and generate detailed reporting about potential issues and actionable items._
 
 ## SPARQL endpoint
 
