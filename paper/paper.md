@@ -100,7 +100,6 @@ To analyze bio.tools, a Bioschemas dump has been generated using a json file for
 
 This analysis allows us to asses the quality of EDAM and bio.tools and reveal some curation priorities to improve both datasets. Some of the results still need further analysis and for some only conjectures were drawn.
 
----
 **EDAM Concept categories**
 
 *Obsolete concepts*: concepts that are judged to be obsolete in the current version. They are marked as deprecated but can still be referenced with their URI.
@@ -111,7 +110,6 @@ This analysis allows us to asses the quality of EDAM and bio.tools and reveal so
 
 *New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26).
 
----
 
 ### Topics:
 
