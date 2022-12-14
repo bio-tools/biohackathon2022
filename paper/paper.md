@@ -162,7 +162,7 @@ For format more than half the auxiliary concepts are used to annotate. For data 
 ![](figures/venn_biotools_entries_annot.png){width=100%}
 
 
-![](figures/upset_biotools_entries_annot.png){width=100%}
+![](figures/upset.png){width=100%}
 
 
 In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated.
