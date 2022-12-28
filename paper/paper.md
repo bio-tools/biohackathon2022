@@ -94,10 +94,10 @@ Here we report the results of a project started at the [BioHackathon Europe 2022
 
 Here we assess the completeness of the annotation of bio.tools entries with EDAM concepts. The two figures 
 
-![](figures/venn_biotools_entries_annot_notitle.png){width=90%}
+![](figures/venn_biotools_entries_annot_notitle.jpg){width=90%}
 Figure 1a: bio.tools entries annotation represented as a Venn Diagram. Each set here represents the proportion of entries annotated with EDAM topics, operations and data. Overlap areas indicate the proportion of bio.tools entries annotated with e.g. both topics and operations, or topics, operations, and data.
 
-![](figures/upset_notitle.png){width=100%}
+![](figures/upset_notitle.jpg){width=100%}
 Figure 1b: bio.tools entries annotation represented as an upset plot. Each line represents the proportion of entries annotated with EDAM topics, operations, data and formats. Columns indicate the proportion of bio.tools entries for each combination of intersections (e.g. proportion of entries annotated with topics and operations).
 
 In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated.
