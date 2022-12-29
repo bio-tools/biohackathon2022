@@ -92,7 +92,7 @@ Here we report the results of a project started at the [BioHackathon Europe 2022
 
 ## Semantic annotation of bio.tools entries of EDAM
 
-Here we assess the completeness of the annotation of bio.tools entries with EDAM concepts. The two figures 
+Here we assess the completeness of the annotation of bio.tools entries with EDAM concepts. The two figures 1a and 1b represent the respective proportions of entries annotated with EDAM topics, operations, data and formats. 
 
 ![](figures/venn_biotools_entries_annot_notitle.jpg){width=90%}
 Figure 1a: bio.tools entries annotation represented as a Venn Diagram. Each set here represents the proportion of entries annotated with EDAM topics, operations and data. Overlap areas indicate the proportion of bio.tools entries annotated with e.g. both topics and operations, or topics, operations, and data.
@@ -100,9 +100,7 @@ Figure 1a: bio.tools entries annotation represented as a Venn Diagram. Each set 
 ![](figures/upset_notitle.jpg){width=100%}
 Figure 1b: bio.tools entries annotation represented as an upset plot. Each line represents the proportion of entries annotated with EDAM topics, operations, data and formats. Columns indicate the proportion of bio.tools entries for each combination of intersections (e.g. proportion of entries annotated with topics and operations).
 
-In the 297 tools totaly missing EDAM annotation, a portion may be spam tools, this should be investigated.
-
-Thanks to the text mining software pub2tool that run through published articles and generated EDAM annotation for tools, 95.7% of tools are annotated with both topic and operation. This result is very encouraging.
+These results show that most entries (83.3%) are annotated with topics and operations, and another significant portion (9.4%) also includes data and format concepts. Only a very small proportion of the entries (1.1%) do not include any EDAM annotation. The explanation for the important proportion of annotated entries is probably that EDAM topics and operations can be specified either by human contributors and curators, but is also the result of an automated text-mining process [@jaaniso2016automatic]. This level of annotation, with 96.2% of the tools including operation annotations, means that for almost all entries the scientific functions of the tools is described. Although only a significantly smaller proportion includes EDAM data for inputs and outputs, these could be automatically determined using the EDAM relations has_input and has_output between operations and data.
 
 With our version of the bio.tools BioSchema dump, 297 tools are totally missing EDAM annotation. When investigating this number, it seems that since the generation of the dump some of the tools have been annotating (when comparing to the ). We will be able to investigate further these tools when updating our Bioschemas dump. As of the 6th of December, preliminary exploration shows that some of the non-annotated tools are annotation errors, meaning that suitable EDAM concepts are available for the annotation, others are non annotated because of lack of concept. Example: HIV-ASSIST: lack of topic and operation concerning training materials/platform. 2dar2darma-param-estimation: available operations are "Image analysis" (http://edamontology.org/operation_3443) and "Modelling and simulation" (http://edamontology.org/operation_2426), and available topic are "Oncology" (http://edamontology.org/topic_2640).
 
