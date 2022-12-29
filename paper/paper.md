@@ -108,19 +108,19 @@ The analyses in this section assess the usage of EDAM concepts in bio.tools for 
 
 This usage analysis has been performed with two versions of EDAM: the last stable release (1.25) currently used in bio.tools, and the current development version (commit hash: 38f21c1edf839efa5d957395f9495562cc7dc1f8). The comparison of these two versions allows to foresee the impact of the future release of EDAM on bio.tools annotations.
 
-To analyze bio.tools, a Bioschemas dump has been generated using a json file for each tool, generated up to the beginning of 2022. A minor proportion of this information may be out of date compared to the bio.tools website at the time of the analysis, however the main tendencies are still relevant. 
-
-This analysis allows us to asses the quality of EDAM and bio.tools and reveal some curation priorities to improve both datasets. Some of the results still need further analysis and for some only conjectures were drawn.
+The goal of this approach is mainly to provide a first assessment on the fitness EDAM and bio.tools, i.e. evaluate whether the space of scientific concepts available in EDAM is adapted to the semantic description of bio.tools entries, and highlight some curation priorities.
 
 **EDAM Concept categories**
 
-*Obsolete concepts*: concepts that are judged to be obsolete in the current version. They are marked as deprecated but can still be referenced with their URI.
+Each of the different EDAM sections analysed can be separated into different categories: 
 
-*Auxiliary concepts*: concepts which are usually placeholders to organize other sub-concepts and should not be used for annotation purposes. Technically speaking, these are identified using the "notRecommendedForAnnotation" property.
+- *Obsolete concepts*: concepts that are judged to be obsolete in the current version. They are marked as deprecated but can still be referenced with their URI.
 
-*Valid concepts*: concepts which are valid for annotation (neither deprecated, nor auxiliary). 
+- *Auxiliary concepts*: concepts which are usually placeholders to organize other sub-concepts and should not be used for annotation purposes. Technically speaking, these are identified using the "notRecommendedForAnnotation" property.
 
-*New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26).
+- *Valid concepts*: concepts which are valid for annotation (neither deprecated, nor auxiliary). 
+
+- *New (valid) concepts*: concepts added to the ontology in the current development version (future 1.26).
 
 
 ### Topics:
