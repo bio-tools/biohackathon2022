@@ -84,7 +84,7 @@ authors_short: Lucie Lamothe,  Jennifer Rugaard Bregndahl Jensen \emph{et al.}
 
 # Introduction
 
-The [Tools Ecosystem](https://github.com/bio-tools/content/) is a centralized repository for the open and transparent exchange of metadata about software tools and services in bioinformatics and life sciences. It serves as a foundation for the sustainability of the diverse Tools Platform services, and for the interoperability between all these essential services: bio.tools [@usesDataFrom:Ison2019], BioContainers [@usesDataFrom:10.1093/bioinformatics/btx192], OpenEBench [@usesDataFrom:openebench], Bioconda [@usesDataFrom:bioconda], WorkflowHub [@usesDataFrom:workflowhub], usegalaxy.eu [@usesDataFrom:galaxy]. It also includes a number of related resources outside of the ELIXIR Tools Platform (e.g. Debian Med, biii.eu).
+The [Tools Ecosystem](https://github.com/bio-tools/content/) is a centralized repository for the open and transparent exchange of metadata about software tools and services in bioinformatics and life sciences. It serves as a foundation for the sustainability and interoperability of the diverse Tools Platform services: bio.tools [@usesDataFrom:Ison2019], BioContainers [@usesDataFrom:10.1093/bioinformatics/btx192], OpenEBench [@usesDataFrom:openebench], Bioconda [@usesDataFrom:bioconda], WorkflowHub [@usesDataFrom:workflowhub], usegalaxy.eu [@usesDataFrom:galaxy]. It also includes a number of related resources outside of the ELIXIR Tools Platform (e.g. Debian Med, biii.eu).
 
 Here we report the results of a project started at the [BioHackathon Europe 2022](https://biohackathon-europe.org/). Its goal is to cross-compare and analyze the metadata centralized in the Tools Ecosystem, together with the EDAM ontology [@providesDataFor:10.1093/bioinformatics/btt113] links used for many annotations of these resources. We present here in a first section the results of these analyses, and in a second section the methods and approach we used, before to discuss potential perspectives for improved monitoring and curation of the Tools Ecosystem metadata and EDAM.
 
@@ -112,7 +112,7 @@ The goal of this approach is mainly to provide a first assessment on the fitness
 
 **EDAM Concept categories**
 
-Each of the different EDAM sections analysed can be separated into different categories: 
+Each of the different EDAM sections analysed here are separated into the following categories: 
 
 - *Obsolete concepts*: concepts that are judged to be obsolete in the current version. They are marked as deprecated but can still be referenced with their URI.
 
@@ -126,30 +126,24 @@ Each of the different EDAM sections analysed can be separated into different cat
 ### Topics:
 
 ![](figures/topic_usage.png){width=100%}
+Figure 2: Usage of EDAM Topic concepts in bio.tools
 
-
-Almost all valid topics are used in the ontology. This could mean that EDAM is perfectly covering the needs of bio.tools users. This result doesn't guaranty that the topic section is extensive or precise enough, as topics can be used as default for lack of better available concept. We need to investigate if more topics are needed.
-
-
-=> Question the author of pub2tool to check for a methodological bias example if it wants to cover all topics are not ask  Erik Jaaniso @jaanisoe - erik.jaaniso@ut.ee
-
+As shown in Figure 2, EDAM topics usage in bio.tools reveals no major anomaly, most of the *valid topics* from version 1.25 being used in EDAM, whereas *obsolete* concepts are only marginally present in annotations. This could optimistically be interpreted as the indication of the fitness for the use of EDAM topics in bio.tools. However, this result doesn't guaranty that the topics section is extensive or precise enough, as some concepts can be used as default for lack of a better one.
 
 ### Operations:
 
 ![](figures/operation_usage.png){width=100%}
+Figure 3: Usage of EDAM Operation concepts in bio.tools
 
-All auxiliary operations are used to annotate tools. We should curate EDAM to remove the "notRecommendedForAnnotation" property from the rightfully used concepts and seek the one that should stay auxiliary. Otherwise, in the same fashion as topics, almost all valid operations are used to annotate bio.tools. 
-
-=> pub2tool, can it annotate with auxiliary concept? 
+Figure 3 displays the same tendencies for EDAM operations, with an overall wide usage of *valid operations* while *obsolete* ones are mostly unused. However, a frequent issue is the use of *auxiliary* concepts. Although such annotations are probably accurate (i.e. consistent with the scientific function performed by the tool), the usage of such concepts is usually discouraged as they are either too broad or reserved for internal structural purposes. The status of some auxiliary concepts from EDAM might however be revised, if such concepts are the most relevant for annotation. 
 
 ### Data and Formats:
 
 ![](figures/data_usage.png){width=100%}
-
-Here only one plot is shown as no new data concepts are currently added to the dev version of EDAM. 
+Figure 4: Usage of EDAM data concepts in bio.tools _(only one plot is shown as no new data concepts have been added to the current development version of EDAM)_ 
 
 ![](figures/format_usage.png){width=100%}
-
+Figure 5: Usage of EDAM format concepts in bio.tools
 
 For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be a consequence of the poor annotation level of tools with data and format as either input or output (see below). It may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools. This could also be explained by the fact that bio.tools doesn't cover as much of bioinformatics fields as EDAM. 
 
