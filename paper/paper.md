@@ -145,19 +145,10 @@ Figure 4: Usage of EDAM data concepts in bio.tools _(only one plot is shown as n
 ![](figures/format_usage.png){width=100%}
 Figure 5: Usage of EDAM format concepts in bio.tools
 
-For the data and format section, a large number of valid concepts, respectively 343 (23%) and 333 (45.2%), are not used in bio.tools. This can be a consequence of the poor annotation level of tools with data and format as either input or output (see below). It may be a consequence of the interface layout when adding the tool's annotation with EDAM concepts in bio.tools. This could also be explained by the fact that bio.tools doesn't cover as much of bioinformatics fields as EDAM. 
-
-Moreover, for the data section, some subconcepts may be too precise for tools annotation and/or labels alone may not be self-explanatory enough. As an example, no tools are annotated with "Alpha diversity", "Beta diversity", and "Gamma diversity" whereas "Biodiversity data", their parent class and a more general concept, is used several times. 
-
-Concerning formats, a file format that is not used by the "modern" scientific community cannot be automatically deprecated as it is still used by older tools and can still be found in databases. This may explain the lack of usage of some valid formats in bio.tools. 
-
-=> does pub2tool mine older tools? otherwise this may also explain
-
-For format more than half the auxiliary concepts are used to annotate. For data 46% of auxiliary concepts are used in bio.tools. We should investigate to identify where this usage error is coming from. It could be EDAM concepts that should not be tagged as auxiliary, missing subconcept in EDAM that could replace the usage of the wider auxiliary concept, or a wrong annotation of the tool. 
-
-### General comment
-
-For each section of EDAM, 44 deprecated concepts are still used to annotate 1213 bio.tools entries. Handling of deprecated concepts is discussed below. 
+In contrast with the usage of topics and operations, a large proportion of data (23%) and formats (45.2%) are not used in bio.tools. Further investigation will be needed to determine this low usage is a consequence of annotation issues, or whether it is justified. Potential explanations include:
+- a lower level of bio.tools EDAM annotation with data and formats, probably linked to the lack of data/format annotations in text-mining created entries.
+- a scope difference between EDAM data and formats and bio.tools, as e.g. a number of EDAM formats might not be relevant in the scientific scope of bio.tools.
+- the irrelevance of "legacy" formats related to life sciences technologies and tools which are now deprecated. It is important to note that such legacy file formats cannot be automatically deprecated as they are still used by older tools and can still be found in databases. This may explain the lack of usage of some valid formats in bio.tools. 
 
 ## Relations between concepts 
 
