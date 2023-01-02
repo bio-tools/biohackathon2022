@@ -192,10 +192,11 @@ This dictionary was used as an input to ______________________.
 
 # Methods
 
-To facilitate the analysis of the data extracted from the Tools Ecosystem and other resources, we decided to make them available in a SPARQL endpoint, a solution that enables the querying of RDF resources. The various resources uploaded to a GraphDB-based SPARQL endpoint include:
-- the EDAM ontology [@usesDataFrom:jon_ison_2020_3899895], available in its development version at https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl.
-- the bio.tools contents [@usesDataFrom:Ison2019], available on the Tools Platform Ecosystem git repository as a Turtle-formatted BioSchemas [@usesMethodIn:gray2017bioschemas] file at https://raw.githubusercontent.com/bio-tools/content/master/datasets/bioschemas-dump.ttl.
-- (add something here about the WorkflowHub [@usesDataFrom:carole_goble_2021_4605654] dump provided by Johan and Alban).
+To facilitate the analysis of the data extracted from the Tools Ecosystem and other resources, we decided to make them available in a SPARQL endpoint using the [GraphDB commercial software](https://graphdb.ontotext.com/), a solution that enables the querying of RDF resources. The various resources uploaded to a GraphDB-based SPARQL endpoint include:
+
+* the EDAM ontology [@usesDataFrom:jon_ison_2020_3899895], available in its development version on the [EDAM GitHub repository](https://raw.githubusercontent.com/edamontology/edamontology/e7260a4220234d10829eaf6e070804c18def795e/EDAM_dev.owl).
+* the bio.tools contents [@usesDataFrom:Ison2019], available on the Tools Platform Ecosystem git repository as a Turtle-formatted BioSchemas [@usesMethodIn:gray2017bioschemas] file.
+* the workflow data extracted from WorkflowHub and Galaxy, and formatted as well in a BioSchemas format.
 
 The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter notebooks. The various results are visualized using python libraries such as matplotlib.
 
@@ -216,15 +217,13 @@ The functions described are available here: https://github.com/bio-tools/biohack
 
 # Perspectives
 
-_Eventually, we expect to get a better understanding of these metadata and their relations, and improve them by designing tools and processes that detect curation bottlenecks, perform rigorous data cross-validation, and generate detailed reporting about potential issues and actionable items._
+The results presented here represent a first approach to building a knowledge base that integrates data from the various Tools Ecosystem components. Based on these results, we plan to develop further a series of goals, which we describe below:
 
-## SPARQL endpoint
+* _Publication of an open SPARQL endpoint_ Improving on the results presented above, we will provide a publicly available SPARQL endpoint using an opensource software. This endpoint will allow any user to query a dataset that will include not only EDAM, bio.tools, and WorkflowHub, but many other resources. This endpoint will be updated by the Tools Ecosystem CI workflows. and for our teams of maintainers to be able to run our queries periodically if needed. It could also be used to improve EDAM CI tool (add ref to caseologue) as it is run using the RDFlib library which is not the most efficient. 
 
-For this project we adopted the [GraphDB commercial software](https://graphdb.ontotext.com/) to store query EDAM and bio.tools datasets. GraphDB has the advatage of being easily set up by anyone. In the future we will provide a publicly available SPARQL endpoint using an opensource software (e.g Virtuoso). The goal would be for anyone to be able to query all datasets (for now EDAM and bio.tools but other datasets will be generated in the future) and for our teams of maintainers to be able to run our queries periodically if needed. It could also be used to improve EDAM CI tool (add ref to caseologue) as it is run using the RDFlib library which is not the most efficient. 
+* _EDAM and Bio.tools analysis_ With this work we created and tested a valid work environment for analysing the EDAM ontology and the Bio.tools registry. In the same fashion as we plan on lifting up the POC level knowledge base up to an open public SPARQL endpoint, we plan on enriching the analyses to provide an exhaustive set of results that monitor the evolution and consistency of the Tools Ecosystem, for both maintainers and the Tools Ecosystem users. These will be run regularly by the Tools Ecosystem CI.
 
-## EDAM and Bio.tools analysis
-
-With our work during this 2022 Biohackathon we created and tested a valid work environment for analysing the EDAM onology and the Bio.tools registry. This work is only the beginning as, in the same fashion, other registry of the Tools Ecosystem will soon be available for analysis. Thanks to our first query base we can easily imagine building on them to be able to evaluate and enhance metadata from the whole Ecosystem. Further more we could to do so automatically to track progress using appropriate graphic displays. Such graphics could be very useful for both maintainers and the Ecosystem tools communities and users. 
+*  Thanks to our first query base we can easily imagine building on them to be able to evaluate and enhance metadata from the whole Ecosystem. Further more we could to do so automatically to track progress using appropriate graphic displays. Such graphics could be very useful for both maintainers and the Ecosystem tools communities and users. 
 
 This first round of analysis left us with some identified curation tasks for both EDAM and bio.tools that should be investigated in the future, as discussed in the Results and Discussion. Moreover some potential enhancement were identified. During our analysis we found our self wondering about the bio.tools entries annotation provenance, from pub2tool of manually added. This could be an interesting addition to bio.tools entries metadata. 
 
