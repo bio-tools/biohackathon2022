@@ -181,17 +181,17 @@ To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub
 
 The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier ( 63% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
-The table below shows the WorkflowHub identifier, the workflow urls and the bio.tools identifiers extracted from 10 example workflows. 
+The table below shows the WorkflowHub identifier, the workflow urls and the **unique** bio.tools identifiers extracted from 10 example workflows. 
 
 | WorkflowHub ID 	| 		bio.tools IDs 		|
 |:---------------:|:-------------------------:|
-| [138](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bx-python, bx-python, bcftools |
-| [221](https://workflowhub.eu/workflows/221) | hifiadapterfilt, bandage, bandage |
+| [138](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bcftools |
+| [221](https://workflowhub.eu/workflows/221) |  hifiadapterfilt, bandage |
 | [395](https://workflowhub.eu/workflows/395) |  cutadapt, bowtie2, samtools, bedtools, macs, multiqc | 
 | [397](https://workflowhub.eu/workflows/397) |  cutadapt, bowtie2, samtools, macs, multiqc |
 | [398](https://workflowhub.eu/workflows/398) |  cutadapt, bowtie2, samtools, macs, multiqc |
-| [399](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, samtools, macs, bedtools, bedtools, bedtools, multiqc |
-| [400](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools, cutadapt, star, multiqc, cufflinks, bedtools |
+| [399](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, macs, multiqc |
+| [400](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools |
 | [403](https://workflowhub.eu/workflows/403) |  quast, busco, merqury |
 | [406](https://workflowhub.eu/workflows/406) |  nanoplot, minimap2, Racon, unicycler, miniasm, bandage, staramr |
 | [407](https://workflowhub.eu/workflows/407) |  bbmap, shovill, bwa, pilon, mob-suite, SISTR |
