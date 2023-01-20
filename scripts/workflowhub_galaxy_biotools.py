@@ -45,6 +45,8 @@ def get_biotools_ID_from_galaxy_tools(galaxy_tools_list):
                     break
         if biotools_id is not None:
             galaxy_biotools_matches[galaxy_id_no_version] = biotools_id
+        else:
+            galaxy_biotools_matches[galaxy_id_no_version] = None
     return(galaxy_biotools_matches)
 
 ########################
@@ -112,6 +114,7 @@ def get_workflowhub_space_workflow_data(url):
         if response.status_code != 200:
             raise FileNotFoundError(response.url)
         workflow_metadata = json.loads(response.text)
+        print(id)
         ### keep only Galaxy workflows!
         if workflow_metadata['data']['attributes']['workflow_class']['key'] == "galaxy":
             available_data[id] = workflow_metadata
@@ -135,13 +138,13 @@ def extract_workflow_steps_as_galaxy_ids(workflowhub_data):
             ### example toolshed ID toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.20+galaxy2
             ### https://stackoverflow.com/a/4843178
             if isinstance(description, str):
-                match_string = "toolshed.g2.bx.psu.edu/repos/.+/.+/.+/[0-9A-Za-z\\.\\+]{3,20}"
+                match_string = "toolshed.g2.bx.psu.edu/repos/.+/.+/.+/.+$"
                 if re.search(match_string, description):
                     # https://stackoverflow.com/a/15340694
                     pattern = re.compile(match_string)
                     extracted_description = pattern.search(description)
                     extracted_galaxy_id = "/".join(extracted_description.group(0).split("/")[:-1])
-                    workflow_steps[extracted_galaxy_id] = ident
+                    workflow_steps[ident] = extracted_galaxy_id
                     all_workflows_steps[i] = workflow_steps
     return(all_workflows_steps)
 
@@ -163,17 +166,19 @@ def map_workflow_steps_to_galaxy_biotools_ids(workflow_steps, biotools_IDs_from_
     COUNT_no_biotools_id_in_my_workflows = 0
     COUNT_biotools_id_in_my_workflows = 0
     COUNT_total_tools_in_my_workflows = 0
+    COUNT_total_workflows = 0
     index = 0
 
     for workflow in workflow_steps:
-        for workflow_galaxy_id in workflow_steps[workflow]:
-            step_number = workflow_steps[workflow][workflow_galaxy_id]
-            if workflow_galaxy_id in biotools_IDs_from_galaxy:
+        COUNT_total_workflows = COUNT_total_workflows + 1
+        for step_number in workflow_steps[workflow]:
+            workflow_galaxy_id = workflow_steps[workflow][step_number]
+            if workflow_galaxy_id in biotools_IDs_from_galaxy and biotools_IDs_from_galaxy[workflow_galaxy_id] is not None:
                 biotools_id = biotools_IDs_from_galaxy[workflow_galaxy_id]
                 COUNT_biotools_id_in_my_workflows = COUNT_biotools_id_in_my_workflows + 1
                 COUNT_total_tools_in_my_workflows = COUNT_total_tools_in_my_workflows + 1
             else:
-                biotools_id = None
+                biotools_id = "no_biotools_id"
                 COUNT_no_biotools_id_in_my_workflows = COUNT_no_biotools_id_in_my_workflows + 1
                 COUNT_total_tools_in_my_workflows = COUNT_total_tools_in_my_workflows + 1
             workflow_data = {}
@@ -188,6 +193,7 @@ def map_workflow_steps_to_galaxy_biotools_ids(workflow_steps, biotools_IDs_from_
     print("No. of workflow tools WITH a bio.tools ID = ", COUNT_biotools_id_in_my_workflows)
     print("No. of workflow tools without a bio.tools ID = ", COUNT_no_biotools_id_in_my_workflows)
     print("Total no. of workflow tools = ", COUNT_total_tools_in_my_workflows)
+    print("Total no. of workflows = ", COUNT_total_workflows)
     print("##################################################")
 
     return(workflow_galaxy_biotools_map)
