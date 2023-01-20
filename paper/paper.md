@@ -107,7 +107,7 @@ Figure 1a: bio.tools entries annotation represented as a Venn Diagram. Each set 
 ![](figures/upset_notitle.jpg){width=100%}
 Figure 1b: bio.tools entries annotation represented as an upset plot. Each line represents the proportion of entries annotated with EDAM topics, operations, data and formats. Columns indicate the proportion of bio.tools entries for each combination of intersections (e.g. proportion of entries annotated with topics and operations).
 
-These results show that most entries (83.3%) are annotated with topics and operations, and another significant portion (9.4%) also includes data and format concepts. Only a very small proportion of the entries (1.1%) do not include any EDAM annotation. The explanation for the important proportion of annotated entries is probably that EDAM topics and operations can be specified either by human contributors and curators, but is also the result of an automated text-mining process [@jaaniso2016automatic]. This level of annotation, with 96.2% of the tools including operation annotations, means that for almost all entries the scientific functions of the tools is described. Although only a significantly smaller proportion includes EDAM data for inputs and outputs, these could be automatically determined using the EDAM relations has_input and has_output between operations and data.
+These results show that most entries (83.3%) are annotated with topics and operations, and another significant portion (9.4%) also includes data and format concepts. Only a very small proportion of the entries (1.1%) do not include any EDAM annotation. The explanation for the important proportion of annotated entries is probably that EDAM topics and operations can be specified either by human contributors and curators, but is also the result of an automated text-mining process [@describes:jaaniso2016automatic]. This level of annotation, with 96.2% of the tools including operation annotations, means that for almost all entries the scientific functions of the tools is described. Although only a significantly smaller proportion includes EDAM data for inputs and outputs, these could be automatically determined using the EDAM relations has_input and has_output between operations and data.
 
 ## EDAM usage in bio.tools
 
@@ -199,13 +199,13 @@ The table below shows the WorkflowHub identifier, the workflow urls and the **un
 
 # Methods
 
-To facilitate the analysis of the data extracted from the Tools Ecosystem and other resources, we decided to make them available in a SPARQL endpoint using the [GraphDB commercial software](https://graphdb.ontotext.com/), a solution that enables the querying of RDF resources. The various resources uploaded to a GraphDB-based SPARQL endpoint include:
+To facilitate the analysis of the data extracted from the Tools Ecosystem and other resources, we integrated them in a local SPARQL endpoint, using the [GraphDB commercial software](https://graphdb.ontotext.com/), a solution that enables the querying of RDF resources. The various resources uploaded to a GraphDB-based SPARQL endpoint include:
 
 * the EDAM ontology [@usesDataFrom:jon_ison_2020_3899895], available in its development version on the [EDAM GitHub repository](https://raw.githubusercontent.com/edamontology/edamontology/e7260a4220234d10829eaf6e070804c18def795e/EDAM_dev.owl).
 * the bio.tools contents [@usesDataFrom:Ison2019], available on the Tools Platform Ecosystem git repository as a Turtle-formatted BioSchemas [@usesMethodIn:gray2017bioschemas] file.
 * the workflow data extracted from WorkflowHub and Galaxy, and formatted as well in a BioSchemas format.
 
-The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter notebooks. The various results are visualized using python libraries such as matplotlib.
+The analysis of the data is performed using SPARQL queries, which are performed using a number of Jupyter [@usesMethodIn:jupyter] notebooks. The various results are visualized using python libraries such as matplotlib [@usesMethodIn:hunter2007matplotlib].
 
 
 ## Mapping between WorkflowHub and bio.tools
