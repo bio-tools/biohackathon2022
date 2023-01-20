@@ -212,12 +212,12 @@ The analysis of the data is performed using SPARQL queries, which are performed 
 
 The functions for mapping between WorkflowHub and bio.tools:
 
-1. Access the WorkflowHub API for a specific space (Australian BioCommons, https://workflowhub.eu/programmes/8/workflows);
-2. Collect all workflow metadata for this space;
-3. Filter these metadata for Galaxy workflows only;
-4. For each workflow, extract all workflow step numbers and Galaxy identifiers;
-5. Use the Galaxy identifiers to access the Galaxy API and extract, where available, bio.tools identifiers
-6. _______________
+1. Access the Galaxy Australia and Galaxy Europe APIs to extract both Galaxy specific tool identifiers and bio.tools identifiers, where available;
+2. Access the entire WorkflowHub registry via API (https://workflowhub.eu/workflows.json), filtering for Galaxy workflows only;
+3. Collect all available workflow metadata from the WorkflowHub API;
+4. For each workflow, extract all workflow step numbers and Galaxy identifiers (where these are documented, N = 82 of N = 129 workflows total);
+5. Map and extract Galaxy tool identifiers for each workflow step, WorkflowHub identifiers (i.e. unique number), bio.tools identifiers for each workflow step, and the workflow step numbers; and
+6. Convert mapped identifiers to `*.ttl` format
 
 The functions described are available here: https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py
 
