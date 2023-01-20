@@ -160,42 +160,42 @@ In contrast with the usage of topics and operations, a large proportion of data 
 
 ## Mapping between WorkflowHub and bio.tools
 
-Here, we sought to explore whether the understanding of bio.tools and EDAM could be extended to include [WorkflowHub](https://workflowhub.eu/), and the future implications of this mapping for each of the three resources. WorkflowHub allows developers to register workflows, each of which are composed of one or more software tools. The connection to bio.tools is clear, and one can imagine a scenario where a workflow registered in WorkflowHub:
+Here, we sought to explore whether bio.tools identifiers, and by extension EDAM annotations, could be integrated with WorkflowHub entries for Galaxy workflows. WorkflowHub allows developers to register workflows, each of which are composed of one or more software tools. The connection to bio.tools is clear, and one can imagine a scenario where a workflow registered in WorkflowHub:
 
-1. Has component tools automatically extracted (as is the case currently for Galaxy); 
+1. Has component tools automatically extracted (as is the case currently for Galaxy);
 2. Each tool has a bio.tools identifier;
 3. This identifier allows WorkflowHub to import and present bio.tools annotations in workflow entries;
-4. WorkflowHub can filter workflows based on both EDAM terms (currently available) and bio.tools identifiers; and
+4. WorkflowHub can filter workflows based on both EDAM terms and bio.tools identifiers (currently available functionality); and
 5. bio.tools can perform the reverse operation and import metadata about workflows that use specific bio.tools entries
 
-To link WorkflowHub and bio.tools entries, an example set of Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) was selected and a map was created between the entries in this space and Galaxy Australia & Galaxy Europe tool identifiers (see methods section for details). This ultimately provided WorkflowHub identifiers as dictionary keys for lists of bio.tools identifiers.
+To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) were accessed via API and, where metadata was available (N = 82 of N = 129 total workflows), a map was created between the individual tool steps in these workflow entries and Galaxy tool identifiers. This ultimately provided a list of workflow steps, mapped to identifiers from WorkflowHub, Galaxy and bio.tools.
 
 ### Results
 
 |                Metric               | Value |
 |-------------------------------------|:-----:|
-|No. of tools WITH a bio.tools ID     |   399  |
-|No. of tools without a bio.tools ID  |   200  |
-|Total no. of tools for all workflows |  599  |
+|No. of tools WITH a bio.tools ID     |   513  |
+|No. of tools without a bio.tools ID  |   302  |
+|Total no. of tools for all workflows |  815  |
+|Total no. of workflows used          |  82   |
 
-The results of the mapping revealed that for 599 tools used across 80 workflows, 399 tools had a bio.tools identifier ( 67% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm), which could be added to the Galaxy tool wrapper.
+The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier ( 63% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
-The table below shows the WorkflowHub identifier, the workflow urls and the bio.tools identifiers extracted from 10 of these workflows. 
+The table below shows the WorkflowHub identifier, the workflow urls and the bio.tools identifiers extracted from 10 example workflows. 
 
-| WorkflowHub ID 	|      url    	| 		bio.tools IDs 		|
-|:---------------:|:--------------------:|:-------------------------:|
-| 138  | [url](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bx-python, bx-python, bcftools |
-| 221  | [url](https://workflowhub.eu/workflows/221) | hifiadapterfilt, bandage, bandage |
-| 395  | [url](https://workflowhub.eu/workflows/395) |  cutadapt, bowtie2, samtools, bedtools, macs, multiqc | 
-| 397  | [url](https://workflowhub.eu/workflows/397) |  cutadapt, bowtie2, samtools, macs, multiqc |
-| 398  | [url](https://workflowhub.eu/workflows/398) |  cutadapt, bowtie2, samtools, macs, multiqc |
-| 399  | [url](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, samtools, macs, bedtools, bedtools, bedtools, multiqc |
-| 400  | [url](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools, cutadapt, star, multiqc, cufflinks, bedtools |
-| 403  | [url](https://workflowhub.eu/workflows/403) |  quast, busco, merqury |
-| 406  | [url](https://workflowhub.eu/workflows/406) |  nanoplot, minimap2, Racon, unicycler, miniasm, bandage, staramr |
-| 407  | [url](https://workflowhub.eu/workflows/407) |  bbmap, shovill, bwa, pilon, mob-suite, SISTR |
+| WorkflowHub ID 	| 		bio.tools IDs 		|
+|:---------------:|:-------------------------:|
+| [138](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bx-python, bx-python, bcftools |
+| [221](https://workflowhub.eu/workflows/221) | hifiadapterfilt, bandage, bandage |
+| [395](https://workflowhub.eu/workflows/395) |  cutadapt, bowtie2, samtools, bedtools, macs, multiqc | 
+| [397](https://workflowhub.eu/workflows/397) |  cutadapt, bowtie2, samtools, macs, multiqc |
+| [398](https://workflowhub.eu/workflows/398) |  cutadapt, bowtie2, samtools, macs, multiqc |
+| [399](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, samtools, macs, bedtools, bedtools, bedtools, multiqc |
+| [400](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools, cutadapt, star, multiqc, cufflinks, bedtools |
+| [403](https://workflowhub.eu/workflows/403) |  quast, busco, merqury |
+| [406](https://workflowhub.eu/workflows/406) |  nanoplot, minimap2, Racon, unicycler, miniasm, bandage, staramr |
+| [407](https://workflowhub.eu/workflows/407) |  bbmap, shovill, bwa, pilon, mob-suite, SISTR |
 
-This dictionary was used as an input to ______________________.
 
 # Methods
 
