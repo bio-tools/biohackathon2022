@@ -86,7 +86,14 @@ authors_short: Lucie Lamothe,  Jennifer Rugaard Bregndahl Jensen \emph{et al.}
 
 The [Tools Ecosystem](https://github.com/bio-tools/content/) is a centralized repository for the open and transparent exchange of metadata about software tools and services in bioinformatics and life sciences. It serves as a foundation for the sustainability and interoperability of the diverse Tools Platform services: bio.tools [@usesDataFrom:Ison2019], BioContainers [@usesDataFrom:10.1093/bioinformatics/btx192], OpenEBench [@usesDataFrom:openebench], Bioconda [@usesDataFrom:bioconda], WorkflowHub [@usesDataFrom:workflowhub], usegalaxy.eu [@usesDataFrom:galaxy]. It also includes a number of related resources outside of the ELIXIR Tools Platform (e.g. Debian Med, biii.eu).
 
-Here we report the results of a project started at the [BioHackathon Europe 2022](https://biohackathon-europe.org/). Its goal is to cross-compare and analyze the metadata centralized in the Tools Ecosystem, together with the EDAM ontology [@usesDataFrom:10.1093/bioinformatics/btt113] links used for many annotations of these resources. We present here in a first section the results of these analyses, and in a second section the methods and approach we used, before to discuss potential perspectives for improved monitoring and curation of the Tools Ecosystem metadata and EDAM.
+Here we report the results of a project started at the [BioHackathon Europe 2022](https://biohackathon-europe.org/). Its goals were to:
+
+1. Cross-compare and analyze the metadata centralized in the Tools Ecosystem, including coverage of the  EDAM ontology [@usesDataFrom:10.1093/bioinformatics/btt113], and 
+2. Explore methods for connecting tools used in registered Galaxy workflows (i.e. WorkflowHub entries) to the annotations available in bio.tools. 
+
+This report is separated into three sections. In the first, we present the results of the two analyses described above. The second section details the methods we used, and finally we discuss potential perspectives for both improved monitoring and curation of the Tools Ecosystem metadata and EDAM, as well as for improving the connectivity and integration between elements of the Ecosystem (i.e. bio.tools, WorkflowHub) and platform services that make use of this Ecosystem (e.g. Galaxy).
+
+
 
 # Results and discussion
 
@@ -153,42 +160,42 @@ In contrast with the usage of topics and operations, a large proportion of data 
 
 ## Mapping between WorkflowHub and bio.tools
 
-Here, we sought to explore whether the understanding of bio.tools and EDAM could be extended to include [WorkflowHub](https://workflowhub.eu/), and the future implications of this mapping for each of the three resources. WorkflowHub allows developers to register workflows, each of which are composed of one or more software tools. The connection to bio.tools is clear, and one can imagine a scenario where a workflow registered in WorkflowHub:
+Here, we sought to explore whether bio.tools identifiers, and by extension EDAM annotations, could be integrated with WorkflowHub entries for Galaxy workflows. WorkflowHub allows developers to register workflows, each of which are composed of one or more software tools. The connection to bio.tools is clear, and one can imagine a scenario where a workflow registered in WorkflowHub:
 
-1. Has component tools automatically extracted (as is the case currently for Galaxy); 
+1. Has component tools automatically extracted (as is the case currently for Galaxy);
 2. Each tool has a bio.tools identifier;
 3. This identifier allows WorkflowHub to import and present bio.tools annotations in workflow entries;
-4. WorkflowHub can filter workflows based on both EDAM terms (currently available) and bio.tools identifiers; and
+4. WorkflowHub can filter workflows based on both EDAM terms and bio.tools identifiers (currently available functionality); and
 5. bio.tools can perform the reverse operation and import metadata about workflows that use specific bio.tools entries
 
-To link WorkflowHub and bio.tools entries, an example set of Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) was selected and a map was created between the entries in this space and Galaxy Australia & Galaxy Europe tool identifiers (see methods section for details). This ultimately provided WorkflowHub identifiers as dictionary keys for lists of bio.tools identifiers.
+To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) were accessed via API and, where metadata was available (N = 82 of N = 129 total workflows), a map was created between the individual tool steps in these workflow entries and Galaxy tool identifiers. This ultimately provided a list of workflow steps, mapped to identifiers from WorkflowHub, Galaxy and bio.tools.
 
 ### Results
 
 |                Metric               | Value |
 |-------------------------------------|:-----:|
-|No. of tools WITH a bio.tools ID     |   399  |
-|No. of tools without a bio.tools ID  |   200  |
-|Total no. of tools for all workflows |  599  |
+|No. of tools WITH a bio.tools ID     |   513  |
+|No. of tools without a bio.tools ID  |   302  |
+|Total no. of tools for all workflows |  815  |
+|Total no. of workflows used          |  82   |
 
-The results of the mapping revealed that for 599 tools used across 80 workflows, 399 tools had a bio.tools identifier ( 67% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm), which could be added to the Galaxy tool wrapper.
+The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier ( 63% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
-The table below shows the WorkflowHub identifier, the workflow urls and the bio.tools identifiers extracted from 10 of these workflows. 
+The table below shows the WorkflowHub identifier, the workflow urls and the **unique** bio.tools identifiers extracted from 10 example workflows. 
 
-| WorkflowHub ID 	|      url    	| 		bio.tools IDs 		|
-|:---------------:|:--------------------:|:-------------------------:|
-| 138  | [url](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bx-python, bx-python, bcftools |
-| 221  | [url](https://workflowhub.eu/workflows/221) | hifiadapterfilt, bandage, bandage |
-| 395  | [url](https://workflowhub.eu/workflows/395) |  cutadapt, bowtie2, samtools, bedtools, macs, multiqc | 
-| 397  | [url](https://workflowhub.eu/workflows/397) |  cutadapt, bowtie2, samtools, macs, multiqc |
-| 398  | [url](https://workflowhub.eu/workflows/398) |  cutadapt, bowtie2, samtools, macs, multiqc |
-| 399  | [url](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, samtools, macs, bedtools, bedtools, bedtools, multiqc |
-| 400  | [url](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools, cutadapt, star, multiqc, cufflinks, bedtools |
-| 403  | [url](https://workflowhub.eu/workflows/403) |  quast, busco, merqury |
-| 406  | [url](https://workflowhub.eu/workflows/406) |  nanoplot, minimap2, Racon, unicycler, miniasm, bandage, staramr |
-| 407  | [url](https://workflowhub.eu/workflows/407) |  bbmap, shovill, bwa, pilon, mob-suite, SISTR |
+| WorkflowHub ID 	| 		bio.tools IDs 		|
+|:---------------:|:-------------------------:|
+| [138](https://workflowhub.eu/workflows/138) |  bedtools, bx-python, bcftools |
+| [221](https://workflowhub.eu/workflows/221) |  hifiadapterfilt, bandage |
+| [395](https://workflowhub.eu/workflows/395) |  cutadapt, bowtie2, samtools, bedtools, macs, multiqc | 
+| [397](https://workflowhub.eu/workflows/397) |  cutadapt, bowtie2, samtools, macs, multiqc |
+| [398](https://workflowhub.eu/workflows/398) |  cutadapt, bowtie2, samtools, macs, multiqc |
+| [399](https://workflowhub.eu/workflows/399) |  cutadapt, bowtie2, samtools, bedtools, seqcode, macs, multiqc |
+| [400](https://workflowhub.eu/workflows/400) |  cutadapt,  star,  multiqc, cufflinks, bedtools |
+| [403](https://workflowhub.eu/workflows/403) |  quast, busco, merqury |
+| [406](https://workflowhub.eu/workflows/406) |  nanoplot, minimap2, Racon, unicycler, miniasm, bandage, staramr |
+| [407](https://workflowhub.eu/workflows/407) |  bbmap, shovill, bwa, pilon, mob-suite, SISTR |
 
-This dictionary was used as an input to ______________________.
 
 # Methods
 
@@ -205,12 +212,12 @@ The analysis of the data is performed using SPARQL queries, which are performed 
 
 The functions for mapping between WorkflowHub and bio.tools:
 
-1. Access the WorkflowHub API for a specific space (Australian BioCommons, https://workflowhub.eu/programmes/8/workflows);
-2. Collect all workflow metadata for this space;
-3. Filter these metadata for Galaxy workflows only;
-4. For each workflow, extract all workflow step numbers and Galaxy identifiers;
-5. Use the Galaxy identifiers to access the Galaxy API and extract, where available, bio.tools identifiers
-6. _______________
+1. Access the Galaxy Australia and Galaxy Europe APIs to extract both Galaxy specific tool identifiers and bio.tools identifiers, where available;
+2. Access the entire WorkflowHub registry via API (https://workflowhub.eu/workflows.json), filtering for Galaxy workflows only;
+3. Collect all available workflow metadata from the WorkflowHub API;
+4. For each workflow, extract all workflow step numbers and Galaxy identifiers (where these are documented, N = 82 of N = 129 workflows total);
+5. Map and extract Galaxy tool identifiers for each workflow step, WorkflowHub identifiers (i.e. unique number), bio.tools identifiers for each workflow step, and the workflow step numbers; and
+6. Convert mapped identifiers to `*.ttl` format
 
 The functions described are available here: https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py
 
@@ -235,7 +242,8 @@ To resolve the lack of annotation of bio.tools entries using data and format con
 
 ## Mapping between WorkflowHub and bio.tools
 
-Registered best practice workflows represent significant investments of researcher time and expertise: ideally these workflows would be able to draw directly on the wealth of metadata and ontology annotations (i.e. EDAM) stored by a registry like bio.tools, with minimal additional input of effort from a workflow developer. The prototype map described by this project is incomplete, with a third of Galaxy workflow tools not mapped, either due to missing annotations in the Galaxy tool wrappers or missing bio.tools registry entries. However, the potential value is already clear: a potential next step is for the map functions between WorkflowHub and Galaxy to be productionised by the Tools Ecosystem, such that bio.tools is able to access all Galaxy workflows on WorkflowHub (N = 126 in December 2022) that make use of bio.tools entries, and WorkflowHub is able to access tool components of its workflows as well as bio.tools registry metadata. Synchronisation in this manner will give each platform the opportunity to further improve the experience of users that contribute to and maintain a FAIR software ecosystem.
+In the previous section we detailed new approaches for evaluating and improving EDAM annotations in bio.tools: the other side of this coin is to ensure that other parts of the Ecosystem can share and benefit from these improvements. One of these parts is computational workflows that are registered in WorkflowHub. Each of these workflows represent a significant investment of researcher time and expertise: ideally these workflows would be able to draw directly on the wealth of metadata and EDAM ontology annotations stored by a registry like bio.tools, with minimal additional input of effort from a workflow developer. 
+The prototype map described by this project is incomplete, with 37% of Galaxy workflow tools missing a bio.tools identifier. Likely causes include either missing annotations in the Galaxy tool wrappers or missing bio.tools registry entries. However, the potential value is already clear: a potential next step is for the map functions between WorkflowHub and Galaxy to be productionised by the Tools Ecosystem, such that bio.tools is able to access all Galaxy workflows on WorkflowHub (N = 129 in January 2023) that make use of bio.tools entries, and WorkflowHub is able to access tool components of its workflows as well as bio.tools registry metadata. Synchronisation in this manner will give each platform the opportunity to further improve the experience of users that contribute to and maintain a FAIR software ecosystem.
 
 Many thousands of Galaxy workflows exist globally. With automated integration, users of WorkflowHub will be able to intuitively navigate the growing set of Galaxy workflows based on their tool of choice, topic, or software operation. 
 
