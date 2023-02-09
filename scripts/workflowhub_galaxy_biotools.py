@@ -14,9 +14,8 @@ import requests, json, re, itertools
 ### Copied and modified code from ###
 #####################################
 
-### https://github.com/AustralianBioCommons/australianbiocommons.github.io/blob/master/finders/workflowfinder.py
-### https://github.com/AustralianBioCommons/australianbiocommons.github.io/blob/master/finders/toolfinder.py
-
+### https://github.com/AustralianBioCommons/australianbiocommons.github.io/blob/4c771d9fece80dacce259304688c2aadb23962ca/finders/toolfinder.py
+### https://github.com/AustralianBioCommons/australianbiocommons.github.io/blob/4c771d9fece80dacce259304688c2aadb23962ca/finders/workflowfinder.py
 
 #####################################################
 ### Access Galaxy API & extract ID + bio.tools ID ###
