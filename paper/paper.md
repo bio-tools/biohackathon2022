@@ -252,5 +252,6 @@ The code described to run the analyses and obtain the results presented here is 
 
 ## Acknowledgements
 This work was funded/supported by ELIXIR, the research infrastructure for life-science data. This work was supported by the Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia funding.
+The authors wish to thank the WorkflowHub, Bioschemas, and Galaxy project teams for their technical help and the fruitful discussions that led to these results.
 
 ## References
