@@ -67,7 +67,7 @@ affiliations:
     index: 10
   - name: L’Institut du Thorax, University of Nantes/CNRS/INSERM, France
     index: 11
-date: 9 November 2022
+date: 13 February 2023
 cito-bibliography: paper.bib
 event: BH22EU
 biohackathon_name: "BioHackathon Europe 2022"
@@ -75,7 +75,7 @@ biohackathon_url:   "https://biohackathon-europe.org/"
 biohackathon_location: "Paris, France, 2022"
 group: Project 25
 # URL to project git repo --- should contain the actual paper.md:
-git_url: https://github.com/bio-tools/bioinformatics-software-metadata-enhancement
+git_url: https://github.com/bio-tools/biohackathon2022
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
 authors_short: Lucie Lamothe,  Jennifer Rugaard Bregndahl Jensen \emph{et al.}
@@ -107,7 +107,7 @@ Figure 1a: bio.tools entries annotation represented as a Venn Diagram. Each set 
 ![](figures/upset_notitle.jpg){width=100%}
 Figure 1b: bio.tools entries annotation represented as an upset plot. Each line represents the proportion of entries annotated with EDAM topics, operations, data and formats. Columns indicate the proportion of bio.tools entries for each combination of intersections (e.g. proportion of entries annotated with topics and operations).
 
-These results show that most entries (83.3%) are annotated with topics and operations, and another significant portion (9.4%) also includes data and format concepts. Only a very small proportion of the entries (1.1%) do not include any EDAM annotation. The explanation for the important proportion of annotated entries is probably that EDAM topics and operations can be specified either by human contributors and curators, but is also the result of an automated text-mining process [@describes:jaaniso2016automatic]. This level of annotation, with 96.2% of the tools including operation annotations, means that for almost all entries the scientific functions of the tools is described. Although only a significantly smaller proportion includes EDAM data for inputs and outputs, these could be automatically determined using the EDAM relations has_input and has_output between operations and data.
+These results show that most entries (83.3%) are annotated with topics and operations, and another significant portion (9.4%) also includes data and format concepts. Only a very small proportion of the entries (1.1%) do not include any EDAM annotation. The explanation for the important proportion of annotated entries is probably that EDAM topics and operations can be specified either by human contributors and curators, but also as the result of an automated text-mining process [@describes:jaaniso2016automatic]. This level of annotation, with 96.2% of the tools including operation annotations, means that for almost all entries the scientific functions of the tools is described.
 
 ## EDAM usage in bio.tools
 
@@ -135,7 +135,7 @@ Each of the different EDAM sections analysed here are separated into the followi
 ![](figures/topic_usage.png){width=100%}
 Figure 2: Usage of EDAM Topic concepts in bio.tools
 
-As shown in Figure 2, EDAM topics usage in bio.tools reveals no major anomaly, most of the *valid topics* from version 1.25 being used in EDAM, whereas *obsolete* concepts are only marginally present in annotations. This could optimistically be interpreted as the indication of the fitness for the use of EDAM topics in bio.tools. However, this result doesn't guaranty that the topics section is extensive or precise enough, as some concepts can be used as default for lack of a better one.
+As shown in Figure 2, EDAM topics usage in bio.tools reveals no major anomaly, most of the *valid topics* from version 1.25 being used in EDAM, whereas *obsolete* concepts are only marginally present in annotations. This could optimistically be interpreted as the indication of the fitness for the use of EDAM topics in bio.tools. However, this result doesn't guarantee that the topics section is extensive or precise enough, as some concepts can be used as default for lack of a better one.
 
 ### Operations:
 
@@ -168,7 +168,7 @@ Here, we sought to explore whether bio.tools identifiers, and by extension EDAM 
 4. WorkflowHub can filter workflows based on both EDAM terms and bio.tools identifiers (currently available functionality); and
 5. bio.tools can perform the reverse operation and import metadata about workflows that use specific bio.tools entries
 
-To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) were accessed via API and, where metadata was available (N = 82 of N = 129 total workflows), a map was created between the individual tool steps in these workflow entries and Galaxy tool identifiers. This ultimately provided a list of workflow steps, mapped to identifiers from WorkflowHub, Galaxy and bio.tools.
+To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub (https://workflowhub.eu/workflows) were accessed via API and, where metadata was available (82 out of 129 total workflows), a map was created between the individual tool steps in these workflow entries and Galaxy tool identifiers. This ultimately provided a list of workflow steps, mapped to identifiers from WorkflowHub, Galaxy and bio.tools.
 
 ### Results
 
@@ -179,7 +179,7 @@ To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub
 |Total no. of tools for all workflows |  815  |
 |Total no. of workflows used          |  82   |
 
-The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier ( 63% ). Note that this does not mean that in each case a biotools identifier does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
+The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier (63%). Note that the absence of a mapped bio.tools identifier does not mean that it does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
 The table below shows the WorkflowHub identifier, the workflow urls and the **unique** bio.tools identifiers extracted from 10 example workflows. 
 
@@ -226,16 +226,15 @@ The functions described are available here: https://github.com/bio-tools/biohack
 
 The results presented here represent a first approach to building a knowledge base that integrates data from the various Tools Ecosystem components. Based on these results, we plan to develop further a series of goals, which we describe below:
 
-* _Publication of an open SPARQL endpoint_ Improving on the results presented above, we will provide a publicly available SPARQL endpoint using an opensource software. This endpoint will allow any user to query a dataset that will include not only EDAM, bio.tools, and WorkflowHub, but many other resources. This endpoint will be updated by the Tools Ecosystem CI workflows. and for our teams of maintainers to be able to run our queries periodically if needed. It could also be used to improve EDAM CI tool (add ref to caseologue) as it is run using the RDFlib library which is not the most efficient. 
+* _Publication of an open SPARQL endpoint_ Improving on the results presented above, we will provide a publicly available SPARQL endpoint using an opensource software. This endpoint will be automatically updated by the Tools Ecosystem CI workflows. It will allow any user to query a dataset that will include not only EDAM, bio.tools, and WorkflowHub, but many other resources, and our teams of maintainers to run queries periodically if needed. It could also be used to optimize the [Caseologue](https://github.com/edamontology/caseologue) EDAM CI tool. 
 
 * _EDAM and Bio.tools analysis_ With this work we created and tested a valid work environment for analysing the EDAM ontology and the Bio.tools registry. In the same fashion as we plan on lifting up the POC level knowledge base up to an open public SPARQL endpoint, we plan on enriching the analyses to provide an exhaustive set of results that monitor the evolution and consistency of the Tools Ecosystem, for both maintainers and the Tools Ecosystem users. These will be run regularly by the Tools Ecosystem CI.
 
-*  Thanks to our first query base we can easily imagine building on them to be able to evaluate and enhance metadata from the whole Ecosystem. Further more we could to do so automatically to track progress using appropriate graphic displays. Such graphics could be very useful for both maintainers and the Ecosystem tools communities and users. 
+*  Thanks to our first query base we can easily imagine building on them to be able to evaluate and enhance metadata from the whole Ecosystem. Furthermore, we could to do so automatically to track progress using appropriate graphic visualizations, for the benefit of both maintainers and Tools Ecosystem communities and users. 
 
-This first round of analysis left us with some identified curation tasks for both EDAM and bio.tools that should be investigated in the future, as discussed in the Results and Discussion. Moreover some potential enhancement were identified. During our analysis we found our self wondering about the bio.tools entries annotation provenance, from pub2tool of manually added. This could be an interesting addition to bio.tools entries metadata. 
+This first round of analysis left us with some identified curation tasks for both EDAM and bio.tools that should be investigated in the future, as discussed in the Results and Discussion. Moreover, some potential enhancement were identified, such as the possibility to track the provenance of bio.tools entry annotations, which would allow to identify more easily e.g. whether they were generated by text-mining tools, or by human contributors.
 
-This work also raised the question of the handling of deprecation in bio.tools. As of 2022, deprecated terms are not removed from the bio.tools annotation. This cannot be properly handled automatically and would be too time consuming manually. In EDAM, when deprecating a term, one of "replacedBy" or "consider" property must be added. "ReplacedBy" concept could be used as automatic replacement for deprecated term but "consider" would need manual validation. 
-=> text mining? 
+This work also raises the question of the handling of deprecation in bio.tools. As of 2022, deprecated terms are not removed from the bio.tools annotation. This cannot be properly handled automatically and would be too time consuming manually. However, the total or partial automation of annotation updates could make use of "replacedBy" or "consider" EDAM properties which are used for deprecated concepts.
 
 To resolve the lack of annotation of bio.tools entries using data and format concepts from EDAM, a perpective could be to improve bio.tools interface. All operations in EDAM are linked to a data via a "has_input" and a "has_output" relation (using inferences from parent concepts). For each operation added to the tool's annotation, input and output data would be suggested to the curator/author based on EDAM relation "has_input", "has_output". The same could go for suggestion of format based on its relation with data as 533 formats (over the 619 valid formats) are related to a data with the "is_format_of" relation. For human user we could also have in the bio.tools interface a "suggested input/output" that would be displayed on the tool page but clearly identifed as an unverified annotation. The enhancement of complete EDAM annotation could lead to automatic workflow generation using the whole Ecosystem metadata. 
 
