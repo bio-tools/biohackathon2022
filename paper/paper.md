@@ -1,6 +1,6 @@
 ---
-title: 'Coverage of EDAM in Bio.tools : a semantic analysis of the Tools Ecosystem'
-title_short: 'Coverage of EDAM in Bio.tools'
+title: 'An evaluation of EDAM coverage in the Tools Ecosystem and prototype integration of Galaxy and WorkflowHub systems'
+title_short: 'An evaluation of EDAM coverage in the Tools Ecosystem and prototype integration of Galaxy and WorkflowHub systems'
 tags:
   - Software metadata
   - Ontologies
