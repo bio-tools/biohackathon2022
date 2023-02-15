@@ -219,7 +219,7 @@ The functions for mapping between WorkflowHub and bio.tools:
 5. Map and extract Galaxy tool identifiers for each workflow step, WorkflowHub identifiers (i.e. unique number), bio.tools identifiers for each workflow step, and the workflow step numbers; and
 6. Convert mapped identifiers to `*.ttl` format
 
-The functions described are available here: https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py
+The functions described are [available here](https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py). Code is based on previous work for ToolFinder [@usesMethodIn:gustafsson_ove_2021_5587837]. See also https://github.com/AustralianBioCommons/australianbiocommons.github.io.
 
 
 # Perspectives
