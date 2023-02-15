@@ -179,7 +179,7 @@ To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub
 |Total no. of tools for all workflows |  815  |
 |Total no. of workflows used          |  82   |
 
-The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier (63%). Note that the absence of a mapped bio.tools identifier does not mean that it does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
+The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier (63%). Note that the absence of a mapped bio.tools identifier does not mean that it does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` [@usesDataFrom:price_farquharson_2022]. This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
 The table below shows the WorkflowHub identifier, the workflow urls and the **unique** bio.tools identifiers extracted from 10 example workflows. 
 
