@@ -34,7 +34,10 @@ authors:
     affiliation: 4, 5
   - name: Adrián Rošinec
     orcid: 0000-0002-7748-5590
-    affiliation: 4, 5
+    affiliation: 4, 12
+  - name: Matej Antol
+    orcid: 0000-0002-1380-5647
+    affiliation: 12
   - name: Magnus Palmblad
     orcid: 0000-0002-5865-8994 
     affiliation: 3
@@ -67,6 +70,8 @@ affiliations:
     index: 10
   - name: L’Institut du Thorax, University of Nantes/CNRS/INSERM, France
     index: 11
+  - name: Institute of Computer Science, Masaryk University, Šumavská 15, 60200 Brno, Czech Republic
+    index: 12
 date: 13 February 2023
 cito-bibliography: paper.bib
 event: BH22EU
