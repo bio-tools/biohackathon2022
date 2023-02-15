@@ -91,7 +91,7 @@ Here we report the results of a project started at the [BioHackathon Europe 2022
 1. Cross-compare and analyze the metadata centralized in the Tools Ecosystem, including coverage of the  EDAM ontology [@usesDataFrom:10.1093/bioinformatics/btt113], and 
 2. Explore methods for connecting tools used in registered Galaxy workflows (i.e. WorkflowHub entries) to the annotations available in bio.tools. 
 
-This report is separated into three sections. In the first, we present the results of the two analyses described above. The second section details the methods we used, and finally we discuss potential perspectives for both improved monitoring and curation of the Tools Ecosystem metadata and EDAM, as well as for improving the connectivity and integration between elements of the Ecosystem (i.e. bio.tools, WorkflowHub) and platform services that make use of this Ecosystem (e.g. Galaxy).
+This report is separated into three sections. In the first, we present the results of the two analyses described above. The second section details the methods we used, and finally we discuss potential perspectives for both improved monitoring and curation of the Tools Ecosystem metadata and EDAM, as well as for improving the connectivity and integration between elements of the Ecosystem (i.e. bio.tools, WorkflowHub) and platform services that make use of this Ecosystem (e.g. Galaxy [@usesDataFrom:10.1093/bioinformatics/btt199]).
 
 
 
@@ -179,9 +179,9 @@ To link WorkflowHub and bio.tools entries, all Galaxy workflows from WorkflowHub
 |Total no. of tools for all workflows |  815  |
 |Total no. of workflows used          |  82   |
 
-The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier (63%). Note that the absence of a mapped bio.tools identifier does not mean that it does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` (https://workflowhub.eu/workflows/221). This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
+The results of the mapping revealed that for 815 tools used across 82 workflows, 513 tools had a bio.tools identifier (63%). Note that the absence of a mapped bio.tools identifier does not mean that it does not exist. It is also possible that the identifier exists but that it still needs to be added to the Galaxy tool metadata. For example, `hifiasm` is used by the workflow `PacBio HiFi genome assembly using hifiasm` [@usesDataFrom:price_farquharson_2022]. This tool has a bio.tools identifier (https://bio.tools/hifiasm) which could be added to the Galaxy tool wrapper.
 
-The table below shows the WorkflowHub identifier, the workflow urls and the **unique** bio.tools identifiers extracted from 10 example workflows. 
+The table below shows the WorkflowHub identifier (with links) and the **unique** bio.tools identifiers extracted from 10 example workflows. 
 
 | WorkflowHub ID 	| 		bio.tools IDs 		|
 |:---------------:|:-------------------------:|
@@ -212,14 +212,14 @@ The analysis of the data is performed using SPARQL queries, which are performed 
 
 The functions for mapping between WorkflowHub and bio.tools:
 
-1. Access the Galaxy Australia and Galaxy Europe APIs to extract both Galaxy specific tool identifiers and bio.tools identifiers, where available;
+1. Access the Galaxy Australia and Galaxy Europe APIs to extract both Galaxy specific tool identifiers and bio.tools identifiers, where available  [@usesDataFrom:10.1093/nar/gkac247];
 2. Access the entire WorkflowHub registry via API (https://workflowhub.eu/workflows.json), filtering for Galaxy workflows only;
 3. Collect all available workflow metadata from the WorkflowHub API;
 4. For each workflow, extract all workflow step numbers and Galaxy identifiers (where these are documented, N = 82 of N = 129 workflows total);
 5. Map and extract Galaxy tool identifiers for each workflow step, WorkflowHub identifiers (i.e. unique number), bio.tools identifiers for each workflow step, and the workflow step numbers; and
 6. Convert mapped identifiers to `*.ttl` format
 
-The functions described are available here: https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py
+The functions described are [available here](https://github.com/bio-tools/biohackathon2022/blob/e154302bb974fe63c3abbb0c757cab04cd49b47e/scripts/workflowhub_galaxy_biotools.py). Code is based on previous work for ToolFinder [@usesMethodIn:gustafsson_ove_2021_5587837]. See also https://github.com/AustralianBioCommons/australianbiocommons.github.io.
 
 
 # Perspectives
